@@ -777,6 +777,9 @@ select {
 .tw-items-center {
   align-items: center;
 }
+.tw-justify-end {
+  justify-content: flex-end;
+}
 .tw-justify-center {
   justify-content: center;
 }
@@ -861,6 +864,9 @@ select {
 .tw-p-2 {
   padding: 0.5rem;
 }
+.tw-p-3 {
+  padding: 0.75rem;
+}
 .tw-py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -924,11 +930,8 @@ select {
 .tw-pt-6 {
   padding-top: 1.5rem;
 }
-.tw-pb-0 {
-  padding-bottom: 0px;
-}
-.tw-pt-0 {
-  padding-top: 0px;
+.tw-pl-2 {
+  padding-left: 0.5rem;
 }
 .tw-text-left {
   text-align: left;
