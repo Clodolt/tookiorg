@@ -22,6 +22,8 @@ defineProps(['message']);
                 <v-icon class="tw-pt-1">mdi-star-outline</v-icon>
             </v-row>
         </v-card-header>
-
+        <v-row>
+            <v-col class="tw-justify-items-start"><v-img src="assets/soul.png" aspect-ratio="1" height="10"></v-img></v-col>
+        </v-row>
     </v-card>
 </template>
