@@ -21,6 +21,7 @@ function toggleFavorite() {
 }
 
 defineProps(['message']);
+
 </script>
 
 <template>
