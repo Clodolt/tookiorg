@@ -22,6 +22,8 @@ mix.js('resources/js/app.js', 'public/js')
         '@': 'resources/js',
     });
 
+mix.browserSync('localhost')
+
 if (mix.inProduction()) {
     mix.version();
 }

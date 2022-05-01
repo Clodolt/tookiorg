@@ -2,6 +2,8 @@
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
 import { Head } from '@inertiajs/inertia-vue3';
 import IslandCard from "@/Components/IslandCard";
+import IslandCardEmma from "@/Components/IslandCardEmma";
+
 </script>
 
 <template>
@@ -19,7 +21,15 @@ import IslandCard from "@/Components/IslandCard";
                 <div class="tw-bg-white tw-overflow-hidden tw-shadow-sm sm:tw-rounded-lg">
                     <div class="tw-p-6 tw-bg-white tw-border-b tw-border-gray-200">
                         You're logged in!
-                        <IslandCard />
+                        <v-row>
+                            <v-col>
+                                <IslandCard />
+                            </v-col>
+                            <v-col>
+                                <IslandCardEmma />
+                            </v-col>
+
+                        </v-row>
                     </div>
                 </div>
             </div>

@@ -595,6 +595,39 @@ select {
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
 }
+.tw-container {
+  width: 100%;
+}
+@media (min-width: 640px) {
+
+  .tw-container {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+
+  .tw-container {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+
+  .tw-container {
+    max-width: 1024px;
+  }
+}
+@media (min-width: 1280px) {
+
+  .tw-container {
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1536px) {
+
+  .tw-container {
+    max-width: 1536px;
+  }
+}
 .tw-fixed {
   position: fixed;
 }
@@ -650,14 +683,14 @@ select {
 .tw-ml-1 {
   margin-left: 0.25rem;
 }
+.tw-ml-2 {
+  margin-left: 0.5rem;
+}
 .tw-mt-3 {
   margin-top: 0.75rem;
 }
 .tw-ml-3 {
   margin-left: 0.75rem;
-}
-.tw-ml-2 {
-  margin-left: 0.5rem;
 }
 .tw--mr-0\.5 {
   margin-right: -0.125rem;
@@ -670,6 +703,30 @@ select {
 }
 .tw-mt-6 {
   margin-top: 1.5rem;
+}
+.tw-ml-5 {
+  margin-left: 1.25rem;
+}
+.tw-mr-auto {
+  margin-right: auto;
+}
+.tw-ml-auto {
+  margin-left: auto;
+}
+.-tw-mr-0 {
+  margin-right: -0px;
+}
+.-tw-mr-3 {
+  margin-right: -0.75rem;
+}
+.tw-mr-0 {
+  margin-right: 0px;
+}
+.tw-mr-3 {
+  margin-right: 0.75rem;
+}
+.tw-mr-2 {
+  margin-right: 0.5rem;
 }
 .tw-block {
   display: block;
@@ -777,9 +834,6 @@ select {
 .tw-items-center {
   align-items: center;
 }
-.tw-justify-end {
-  justify-content: flex-end;
-}
 .tw-justify-center {
   justify-content: center;
 }
@@ -855,17 +909,28 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(238 242 255 / var(--tw-bg-opacity));
 }
+.tw-bg-green-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
+}
 .tw-fill-current {
   fill: currentColor;
+}
+.tw-object-contain {
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .tw-p-6 {
   padding: 1.5rem;
 }
+.tw-p-3 {
+  padding: 0.75rem;
+}
 .tw-p-2 {
   padding: 0.5rem;
 }
-.tw-p-3 {
-  padding: 0.75rem;
+.tw-p-4 {
+  padding: 1rem;
 }
 .tw-py-4 {
   padding-top: 1rem;
@@ -930,8 +995,23 @@ select {
 .tw-pt-6 {
   padding-top: 1.5rem;
 }
+.tw-pl-4 {
+  padding-left: 1rem;
+}
 .tw-pl-2 {
   padding-left: 0.5rem;
+}
+.tw-pl-5 {
+  padding-left: 1.25rem;
+}
+.tw-pb-2 {
+  padding-bottom: 0.5rem;
+}
+.tw-pr-2 {
+  padding-right: 0.5rem;
+}
+.tw-pr-3 {
+  padding-right: 0.75rem;
 }
 .tw-text-left {
   text-align: left;
@@ -967,6 +1047,9 @@ select {
 }
 .tw-font-medium {
   font-weight: 500;
+}
+.tw-font-bold {
+  font-weight: 700;
 }
 .tw-uppercase {
   text-transform: uppercase;
