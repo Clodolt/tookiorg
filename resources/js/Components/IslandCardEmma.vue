@@ -6,9 +6,11 @@ let islandName = "Alteisen";
 let itemLvl = 250;
 let description = "RNG [Monster kills]";
 let soulGotten = ref(false);
-let isFavorite = true;
+let isFavorite = ref(true);
 
-
+function toggleFavorite(){
+    isFavorite.value = !isFavorite.value;
+}
 
 </script>
 
@@ -16,17 +18,27 @@ let isFavorite = true;
     <v-card
         width="400"
         :class = "{'bg-green':soulGotten, 'bg-red':!soulGotten}"
+        rounded="lg"
+        :elevation="11"
     >
         <v-card-header>
             <v-row class="tw-p-3">
-                <v-avatar size="50">
-                    <v-img src="https://cdn.vuetifyjs.com/images/john.jpg"></v-img>
+                <v-avatar
+                    class="tw-outline tw-outline-2" size="50"
+                    :class ="{'tw-outline-green-800':soulGotten, 'tw-outline-red-800':!soulGotten}"
+                >
+                    <v-img src="https://d3planner-assets.maxroll.gg/lost-ark/icons/island_icon_12.png"></v-img>
+
                 </v-avatar>
                 <v-card-header-text>
                     <v-card-title class="text-grey-lighten-5 tw-ml-3">{{islandName}}</v-card-title>
                     <v-card-subtitle class="text-grey-lighten-5 tw-ml-3">Item-Level: {{itemLvl}}</v-card-subtitle>
                 </v-card-header-text>
-                <v-icon class="tw-pt-1" style="color: #f5c542">
+                <v-icon @click="toggleFavorite" class="tw-pt-1 tw-cursor-pointer" style="color: #f5c542" v-if="isFavorite">
+                    mdi-star
+                </v-icon>
+
+                <v-icon @click="toggleFavorite" class="tw-pt-1 tw-cursor-pointer" style="color: #f5c542" v-if="!isFavorite">
                     mdi-star-outline
                 </v-icon>
             </v-row>
