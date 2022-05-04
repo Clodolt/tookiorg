@@ -1,12 +1,21 @@
 <script setup>
 
 import {ref} from "vue";
+import {computed} from "vue";
 
 let islandName = "Alteisen";
 let itemLvl = 250;
 let description = "RNG [Monster kills]";
 let soulGotten = ref(false);
-let isFavorite = ref(true);
+let isFavorite = ref(false);
+let mokokoTotal = ref(8);
+let mokokoCollected = ref(2);
+
+const cardClassObject = computed(() => ({
+    'bg-red-darken-4': !soulGotten.value || !(mokokoTotal.value - mokokoCollected.value === 0),
+    'bg-amber-accent-4': isFavorite.value && !(soulGotten.value && mokokoTotal.value - mokokoCollected.value === 0),
+    'bg-green-darken-3': soulGotten.value && (mokokoTotal.value - mokokoCollected.value === 0),
+}))
 
 function toggleFavorite(){
     isFavorite.value = !isFavorite.value;
@@ -17,7 +26,7 @@ function toggleFavorite(){
 <template>
     <v-card
         width="300"
-        :class = "{'bg-green-darken-3':soulGotten, 'bg-red-darken-4':!soulGotten}"
+        :class = "cardClassObject"
         rounded="lg"
         :elevation="11"
     >
@@ -46,9 +55,12 @@ function toggleFavorite(){
 
         <v-card-text>
             <v-row class="tw-pt-2">
-                <div class="d-flex">
+                <div class="d-flex align-center tw-text-white">
                     <img class="tw-ml-4" alt="mokoko icon" width="28" src="/assets/mokoko.png"/>
                     <div class="text-body-1 text-grey-lighten-5 font-weight-medium tw-pl-2">Mokoko</div>
+                    <div style="width: 50px"></div>
+                    <input type="number" min="0" max="{{mokokoTotal}}" class="tw-text-center tw-opacity-70 tw-bg-white tw-text-gray-700" style="width:20px" v-model="mokokoCollected" maxlength="1" />
+                    <p class="tw-pl-2">of {{mokokoTotal}}</p>
                 </div>
             </v-row>
             <v-row class="tw-pt-2">

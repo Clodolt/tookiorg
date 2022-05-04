@@ -13,6 +13,7 @@ import IslandCard from "@/Components/IslandCard";
             <h2 class="tw-font-semibold tw-text-xl tw-text-gray-800 tw-leading-tight dark:tw-text-white dark:tw-bg-neutral-700">
                 Island Tracker
             </h2>
+
         </template>
 
         <div class="tw-py-12">
