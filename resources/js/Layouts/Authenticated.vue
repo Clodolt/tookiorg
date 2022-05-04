@@ -39,15 +39,15 @@ const showingNavigationDropdown = ref(false);
                     <div class="tw-flex tw-h-16 dark:tw-text-white">
                         <div class="tw-flex">
                             <!-- Logo -->
-                            <div class="tw-flex tw-items-center">
-                                <Link :href="route('dashboard')">
+                            <div class="flex-shrink-0 tw-flex tw-items-center">
+                                <Link :href="route('islandtracker')">
                                     <v-img class="mr-3" src="/assets/Tooki.png" height="130px" width="130px" />
                                 </Link>
                             </div>
 
                             <!-- Navigation Links -->
                             <div class="tw-hidden sm:tw--my-px sm:tw-ml-10 sm:tw-flex">
-                                <BreezeNavLink class="dark:tw-text-white" :href="route('dashboard')" :active="route().current('dashboard')">
+                                <BreezeNavLink class="dark:tw-text-white" :href="route('islandtracker')" :active="route().current('islandtracker')">
                                     Island Tracker
                                 </BreezeNavLink>
                             </div>
@@ -55,7 +55,7 @@ const showingNavigationDropdown = ref(false);
 
                         <div class="tw-hidden sm:tw-flex sm:tw-items-center tw-ml-auto tw-mr-0">
                             <!-- Settings Dropdown -->
-                            <div class="tw-ml-3 tw-relative">
+                            <div v-if="$page.props.auth.user" class="tw-ml-3 tw-relative">
                                 <BreezeDropdown align="right" width="48">
                                     <template #trigger>
                                         <span class="tw-inline-flex tw-rounded-md">
@@ -118,13 +118,13 @@ const showingNavigationDropdown = ref(false);
                 <div :class="{'tw-block': showingNavigationDropdown, 'tw-hidden': ! showingNavigationDropdown}"
                      class="sm:tw-hidden">
                     <div class="tw-pt-2 tw-pb-3 tw-space-y-1">
-                        <BreezeResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                            Dashboard
+                        <BreezeResponsiveNavLink :href="route('islandtracker')" :active="route().current('islandtracker')">
+                            Island Tracker
                         </BreezeResponsiveNavLink>
                     </div>
 
                     <!-- Responsive Settings Options -->
-                    <div class="tw-pt-4 tw-pb-1 tw-border-t tw-border-gray-200">
+                    <div v-if="$page.props.auth.user" class="tw-pt-4 tw-pb-1 tw-border-t tw-border-gray-200">
                         <div class="tw-px-4">
                             <div class="tw-font-medium tw-text-base tw-text-gray-800">{{
                                     $page.props.auth.user.name
@@ -156,6 +156,34 @@ const showingNavigationDropdown = ref(false);
             <main>
                 <slot/>
             </main>
+            <v-footer padless class="dark:tw-bg-neutral-700">
+                <v-container fluid>
+                <v-card
+                    flat="true"
+                    tile
+                    class="tw-flex tw-bg-white dark:tw-bg-neutral-700 text-center"
+                >
+                    <v-card-text>
+                        <v-btn
+                            class="mx-4 white--text dark:tw-text-white dark:tw-bg-black "
+                            icon ="mdi-github"
+                            href="https://github.com/Clodolt/tookiorg"
+                        >
+                        </v-btn>
+                    </v-card-text>
+
+                    <v-card-text class="white--text dark:tw-text-white pt-0">
+                        Dodi ist unser Lieblingsbaum ❤️
+                    </v-card-text>
+
+                    <v-divider></v-divider>
+
+                    <v-card-text class="white--text dark:tw-text-white">
+                        {{ new Date().getFullYear() }} — <strong>Clodolt & Erela</strong>
+                    </v-card-text>
+                </v-card>
+                </v-container>
+            </v-footer>
         </div>
     </div>
 </template>

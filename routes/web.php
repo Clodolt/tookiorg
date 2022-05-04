@@ -24,8 +24,12 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/islandtracker', function () {
+    return Inertia::render('IslandTracker');
+})->middleware(['auth', 'verified'])->name('islandtracker');
+
+Route::get('/maris', function () {
+    return Inertia::render('MarisShop');
+});
 
 require __DIR__.'/auth.php';

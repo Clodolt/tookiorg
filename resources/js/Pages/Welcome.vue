@@ -14,8 +14,8 @@ defineProps({
 
     <div class="tw-relative tw-flex items-top tw-justify-center tw-min-h-screen tw-bg-gray-100 dark:tw-bg-gray-900 sm:tw-items-center sm:tw-pt-0">
         <div v-if="canLogin" class="tw-hidden tw-fixed tw-top-0 tw-right-0 tw-px-6 tw-py-4 sm:tw-block">
-            <Link v-if="$page.props.auth.user" :href="route('dashboard')" class="tw-text-sm tw-text-gray-700 tw-underline">
-                Dashboard
+            <Link v-if="$page.props.auth.user" :href="route('islandtracker')" class="tw-text-sm tw-text-gray-700 tw-underline">
+                Island Tracker
             </Link>
 
             <template v-else>
