@@ -1,5 +1,5 @@
 <script setup>
-import {ref, watch} from 'vue';
+import {onBeforeMount, onMounted, ref, watch} from 'vue';
 import BreezeApplicationLogo from '@/Components/ApplicationLogo.vue';
 import BreezeDropdown from '@/Components/Dropdown.vue';
 import BreezeDropdownLink from '@/Components/DropdownLink.vue';
@@ -8,14 +8,20 @@ import BreezeResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import {Link} from '@inertiajs/inertia-vue3';
 
 let root = document.getElementsByTagName('html')[0];
+let darkMode = ref(localStorage.getItem("isDark") === 'true');
 
-const darkMode = ref(false);
-
-watch(darkMode, () => {
-    console.log(darkMode.value)
+onBeforeMount(() => {
     if(darkMode.value) {
         root.classList.add('tw-dark');
+    }
+})
+
+watch(darkMode, () => {
+    if(darkMode.value) {
+        localStorage.setItem("isDark", "true");
+        root.classList.add('tw-dark');
     } else {
+        localStorage.setItem("isDark", "false");
         root.classList.remove('tw-dark');
     }
 })
@@ -33,7 +39,7 @@ const showingNavigationDropdown = ref(false);
                     <div class="tw-flex tw-h-16 dark:tw-text-white">
                         <div class="tw-flex">
                             <!-- Logo -->
-                            <div class="shrink-0 tw-flex tw-items-center">
+                            <div class="tw-flex tw-items-center">
                                 <Link :href="route('dashboard')">
                                     <v-img class="mr-3" src="/assets/Tooki.png" height="130px" width="130px" />
                                 </Link>

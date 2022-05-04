@@ -683,9 +683,6 @@ select {
 .tw-mt-6 {
   margin-top: 1.5rem;
 }
-.tw-mr-1 {
-  margin-right: 0.25rem;
-}
 .tw-block {
   display: block;
 }
@@ -709,9 +706,6 @@ select {
 }
 .tw-h-5 {
   height: 1.25rem;
-}
-.tw-h-9 {
-  height: 2.25rem;
 }
 .tw-h-4 {
   height: 1rem;
@@ -861,10 +855,6 @@ select {
 .tw-bg-indigo-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(238 242 255 / var(--tw-bg-opacity));
-}
-.tw-bg-green-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(74 222 128 / var(--tw-bg-opacity));
 }
 .tw-fill-current {
   fill: currentColor;
@@ -1114,9 +1104,6 @@ select {
 .tw-duration-75 {
   transition-duration: 75ms;
 }
-.tw-duration-100 {
-  transition-duration: 100ms;
-}
 .tw-ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -1150,17 +1137,13 @@ select {
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
 }
-.hover\:tw-text-gray-500:hover {
-  --tw-text-opacity: 1;
-  color: rgb(107 114 128 / var(--tw-text-opacity));
-}
-.hover\:tw-text-neutral-100:hover {
-  --tw-text-opacity: 1;
-  color: rgb(245 245 245 / var(--tw-text-opacity));
-}
 .hover\:tw-text-neutral-200:hover {
   --tw-text-opacity: 1;
   color: rgb(229 229 229 / var(--tw-text-opacity));
+}
+.hover\:tw-text-gray-500:hover {
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 .focus\:tw-border-gray-900:focus {
   --tw-border-opacity: 1;
@@ -1238,24 +1221,13 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
-.tw-dark .dark\:tw-bg-green-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(74 222 128 / var(--tw-bg-opacity));
-}
-.tw-dark .dark\:tw-bg-neutral-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(82 82 82 / var(--tw-bg-opacity));
-}
-.tw-dark .dark\:tw-bg-neutral-700 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(64 64 64 / var(--tw-bg-opacity));
-}
 .tw-dark .dark\:tw-bg-neutral-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(38 38 38 / var(--tw-bg-opacity));
 }
-.tw-dark .dark\:tw-fill-white {
-  fill: #fff;
+.tw-dark .dark\:tw-bg-neutral-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(64 64 64 / var(--tw-bg-opacity));
 }
 .tw-dark .dark\:tw-text-gray-500 {
   --tw-text-opacity: 1;
