@@ -3,7 +3,20 @@
 import {ref} from "vue";
 import {computed} from "vue";
 
-let islandName = "Alteisen";
+const props= defineProps({
+    id: Number,
+    title: String,
+    ilvl:Number,
+    mokokoTotal:Number,
+    mokokosCollected:Number,
+    soulGotten: Boolean,
+    isFavorite: Boolean,
+    soulType: String,
+    islandType:String,
+    islandImg:String
+})
+
+let islandName = props.title;
 let itemLvl = 250;
 let description = "RNG [Monster kills]";
 let soulGotten = ref(false);
@@ -20,6 +33,9 @@ const cardClassObject = computed(() => ({
 function toggleFavorite(){
     isFavorite.value = !isFavorite.value;
 }
+
+
+
 
 </script>
 
@@ -40,8 +56,8 @@ function toggleFavorite(){
 
                 </v-avatar>
                 <v-card-header-text>
-                    <v-card-title class="text-grey-lighten-5 tw-ml-3">{{islandName}}</v-card-title>
-                    <v-card-subtitle class="text-grey-lighten-5 tw-ml-3">Item-Level: {{itemLvl}}</v-card-subtitle>
+                    <v-card-title class="text-grey-lighten-5 tw-ml-3">{{props.title}}</v-card-title>
+                    <v-card-subtitle class="text-grey-lighten-5 tw-ml-3">Item-Level: {{props.ivl}}</v-card-subtitle>
                 </v-card-header-text>
                 <v-icon @click="toggleFavorite" class="tw-pt-1 tw-cursor-pointer" size="35" style="color: #f5c542" v-if="isFavorite">
                     mdi-star
@@ -59,7 +75,7 @@ function toggleFavorite(){
                     <img class="tw-ml-4" alt="mokoko icon" width="28" src="/assets/mokoko.png"/>
                     <div class="text-body-1 text-grey-lighten-5 font-weight-medium tw-pl-2">Mokoko</div>
                     <div style="width: 50px"></div>
-                    <input type="number" min="0" max="{{mokokoTotal}}" class="tw-text-center tw-opacity-70 tw-bg-white tw-text-gray-700" style="width:20px" v-model="mokokoCollected" maxlength="1" />
+                    <input type="number" min="0" max="{{props.mok}}" class="tw-text-center tw-opacity-70 tw-bg-white tw-text-gray-700" style="width:20px" v-model="mokokoCollected" maxlength="1" />
                     <p class="tw-pl-2">of {{mokokoTotal}}</p>
                 </div>
             </v-row>
