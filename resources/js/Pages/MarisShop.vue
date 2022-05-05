@@ -1,7 +1,7 @@
 <script setup>
 import Layout from '@/Layouts/Authenticated.vue';
 import { Head } from '@inertiajs/inertia-vue3';
-import IslandCard from "@/Components/IslandCard";
+import MarisItem from "@/Components/MarisItem";
 
 </script>
 
@@ -21,55 +21,20 @@ import IslandCard from "@/Components/IslandCard";
                     <div class="tw-p-6 tw-bg-white dark:tw-bg-neutral-700">
                         <v-container>
                             <v-row>
-                                <v-col cols="4">
-                                    <IslandCard />
+                                <v-col>
+                                    <v-list class="tw-bg-neutral-100 dark:tw-bg-neutral-600">
+                                        <MarisItem key="1" title="Test" price="3"></MarisItem>
+                                        <MarisItem key="1" title="Test" price="3"></MarisItem>
+                                        <MarisItem key="1" title="Test" price="3"></MarisItem>
+                                    </v-list>
                                 </v-col>
-                                <v-col cols="4">
-                                    <IslandCard />
+                                <v-col>
+                                    <v-list class="tw-bg-neutral-100 dark:tw-bg-neutral-600">
+                                        <MarisItem key="1" title="Test" price="3"></MarisItem>
+                                        <MarisItem key="1" title="Test" price="3"></MarisItem>
+                                        <MarisItem key="1" title="Test" price="3"></MarisItem>
+                                    </v-list>
                                 </v-col>
-                                <v-col cols="4">
-                                    <IslandCard />
-                                </v-col>
-                                <v-col cols="4">
-                                    <IslandCard />
-                                </v-col>
-                                <v-col cols="4">
-                                    <IslandCard />
-                                </v-col>
-                                <v-col cols="4">
-                                    <IslandCard />
-                                </v-col>
-                                <v-col cols="4">
-                                    <IslandCard />
-                                </v-col>
-                                <v-col cols="4">
-                                    <IslandCard />
-                                </v-col>
-                                <v-col cols="4">
-                                    <IslandCard />
-                                </v-col>
-                                <v-col cols="4">
-                                    <IslandCard />
-                                </v-col>
-                                <v-col cols="4">
-                                    <IslandCard />
-                                </v-col>
-                                <v-col cols="4">
-                                    <IslandCard />
-                                </v-col>
-                                <v-col cols="4">
-                                    <IslandCard />
-                                </v-col>
-                                <v-col cols="4">
-                                    <IslandCard />
-                                </v-col>
-                                <v-col cols="4">
-                                    <IslandCard />
-                                </v-col>
-                                <v-col cols="4">
-                                    <IslandCard />
-                                </v-col>
-
                             </v-row>
                         </v-container>
                     </div>

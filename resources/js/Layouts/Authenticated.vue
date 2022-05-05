@@ -1,6 +1,5 @@
 <script setup>
-import {onBeforeMount, onMounted, ref, watch} from 'vue';
-import BreezeApplicationLogo from '@/Components/ApplicationLogo.vue';
+import {onBeforeMount, ref, watch} from 'vue';
 import BreezeDropdown from '@/Components/Dropdown.vue';
 import BreezeDropdownLink from '@/Components/DropdownLink.vue';
 import BreezeNavLink from '@/Components/NavLink.vue';
@@ -60,7 +59,7 @@ const showingNavigationDropdown = ref(false);
                                     <template #trigger>
                                         <span class="tw-inline-flex tw-rounded-md">
                                             <button type="button"
-                                                    class="tw-inline-flex tw-items-center tw-px-3 tw-py-2  tw-border-transparent tw-text-sm tw-leading-4 tw-font-medium tw-rounded-md tw-text-gray-500 hover:tw-text-neutral-200 focus:tw-outline-none tw-transition tw-ease-in-out tw-duration-150 ">
+                                                    class="tw-inline-flex tw-items-center tw-px-3 tw-py-2  tw-border-transparent tw-text-sm tw-leading-4 tw-font-medium tw-rounded-md tw-text-gray-500 hover:tw-text-neutral-200 focus:tw-outline-none tw-transition tw-ease-in-out tw-duration-150 dark:tw-text-white dark:hover:tw-text-neutral-300">
                                                 {{ $page.props.auth.user.name }}
 
                                                 <svg class="tw-ml-2 tw--mr-0.5 tw-h-4 tw-w-4"
@@ -161,7 +160,7 @@ const showingNavigationDropdown = ref(false);
                 <v-card
                     flat="true"
                     tile
-                    class="tw-flex tw-bg-white dark:tw-bg-neutral-700 text-center"
+                    class="tw-bg-white dark:tw-bg-neutral-700 text-center"
                 >
                     <v-card-text>
                         <v-btn
