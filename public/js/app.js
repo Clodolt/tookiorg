@@ -21789,52 +21789,29 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: {
-    id: Number,
-    title: String,
-    ilvl: Number,
-    mokokoTotal: Number,
-    mokokosCollected: Number,
-    soulGotten: Boolean,
-    isFavorite: Boolean,
-    soulType: String,
-    islandType: String,
-    islandImg: String
-  },
+  props: ['id', 'title', 'ilvl', 'mokokosTotal', 'mokokosCollected', 'soulGotten', 'isFavorite', 'soulType', 'islandType'],
   setup: function setup(__props, _ref) {
     var expose = _ref.expose;
     expose();
     var props = __props;
-    var islandName = props.title;
-    var itemLvl = 250;
-    var description = "RNG [Monster kills]";
     var soulGotten = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
     var isFavorite = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(false);
-    var mokokoTotal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(8);
-    var mokokoCollected = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(2);
+    var mokokosTotal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(8);
+    var mokokosCollected = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(2);
     var cardClassObject = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(function () {
       return {
-        'bg-red-darken-4': !soulGotten.value || !(mokokoTotal.value - mokokoCollected.value === 0),
-        'bg-amber-accent-4': isFavorite.value && !(soulGotten.value && mokokoTotal.value - mokokoCollected.value === 0),
-        'bg-green-darken-3': soulGotten.value && mokokoTotal.value - mokokoCollected.value === 0
+        'bg-red-darken-4': !props.soulGotten.value || !(props.mokokosTotal.value - props.mokokosCollected.value === 0),
+        'bg-amber-accent-4': props.isFavorite.value && !(props.soulGotten.value && props.mokokosTotal.value - props.mokokosCollected.value === 0),
+        'bg-green-darken-3': props.soulGotten.value && props.mokokosTotal.value - props.mokokosCollected.value === 0
       };
     });
-
-    function toggleFavorite() {
-      isFavorite.value = !isFavorite.value;
-    }
-
     var __returned__ = {
       props: props,
-      islandName: islandName,
-      itemLvl: itemLvl,
-      description: description,
       soulGotten: soulGotten,
       isFavorite: isFavorite,
-      mokokoTotal: mokokoTotal,
-      mokokoCollected: mokokoCollected,
+      mokokosTotal: mokokosTotal,
+      mokokosCollected: mokokosCollected,
       cardClassObject: cardClassObject,
-      toggleFavorite: toggleFavorite,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       computed: vue__WEBPACK_IMPORTED_MODULE_0__.computed
     };
@@ -22495,6 +22472,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_Authenticated_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/Authenticated.vue */ "./resources/js/Layouts/Authenticated.vue");
 /* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
 /* harmony import */ var _Components_IslandCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Components/IslandCard */ "./resources/js/Components/IslandCard.vue");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
 
 
 
@@ -22506,59 +22485,31 @@ __webpack_require__.r(__webpack_exports__);
       id: 1,
       title: "Alteisen",
       ilvl: 250,
-      mokokoTotal: 10,
-      mokokosCollected: 2,
-      soulGotten: false,
-      isFavorite: false,
-      soulType: "RNG[Monster]",
+      mokokosTotal: 10,
+      mokokosCollected: (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)(2),
+      soulGotten: (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)(false),
+      isFavorite: (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)(false),
+      soulType: "RNG[Monster kills]",
       islandType: "Adventure"
     };
-    var island2 = {
-      id: 1,
-      title: "Alakkir",
-      ilvl: 250,
-      mokokoTotal: 5,
-      mokokosCollected: 1,
-      soulGotten: true,
-      isFavorite: false,
-      soulType: "Unas Task",
-      //Unas Task
-      islandType: "Adventure"
-    };
-    var island3 = {
-      //Gelb
-      id: 1,
-      title: "Lullaby",
-      ilvl: 250,
-      mokokoTotal: 8,
-      mokokosCollected: 0,
-      soulGotten: false,
-      isFavorite: true,
-      soulType: "RNG[Monster]",
-      islandType: "Timed" //Timed
+    var islandList = [island1];
 
-    };
-    var island4 = {
-      //Gelb
-      id: 1,
-      title: "Lullyby",
-      ilvl: 250,
-      mokokoTotal: 5,
-      mokokosCollected: 5,
-      soulGotten: true,
-      isFavorite: false,
-      soulType: "RNG[Monster]",
-      islandType: "Timed" //Timed
+    function toggleFavorite(id) {
+      var islandToChange = islandList.find(function (island) {
+        return island.id === id;
+      });
+      islandToChange.isFavorite.value = !islandToChange.isFavorite.value;
+      console.log(island1.isFavorite.value);
+    }
 
-    };
     var __returned__ = {
       island1: island1,
-      island2: island2,
-      island3: island3,
-      island4: island4,
+      islandList: islandList,
+      toggleFavorite: toggleFavorite,
       BreezeAuthenticatedLayout: _Layouts_Authenticated_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
       Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Head,
-      IslandCard: _Components_IslandCard__WEBPACK_IMPORTED_MODULE_2__["default"]
+      IslandCard: _Components_IslandCard__WEBPACK_IMPORTED_MODULE_2__["default"],
+      ref: vue__WEBPACK_IMPORTED_MODULE_3__.ref
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -22879,7 +22830,7 @@ var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "text-body-1 text-grey-lighten-5 font-weight-medium tw-pl-2"
-}, "Mokoko", -1
+}, "Mokokos", -1
 /* HOISTED */
 );
 
@@ -22965,8 +22916,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_avatar, {
                 "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["tw-outline tw-outline-2", {
-                  'tw-outline-green-800': $setup.soulGotten,
-                  'tw-outline-red-800': !$setup.soulGotten
+                  'tw-outline-green-800': $setup.props.soulGotten.value,
+                  'tw-outline-red-800': !$setup.props.soulGotten.value
                 }]),
                 size: "50"
               }, {
@@ -22997,7 +22948,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     "class": "text-grey-lighten-5 tw-ml-3"
                   }, {
                     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Item-Level: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.props.ivl), 1
+                      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Item-Level: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.props.ilvl), 1
                       /* TEXT */
                       )];
                     }),
@@ -23009,9 +22960,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 _: 1
                 /* STABLE */
 
-              }), $setup.isFavorite ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_v_icon, {
+              }), $setup.props.isFavorite.value ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_v_icon, {
                 key: 0,
-                onClick: $setup.toggleFavorite,
+                onClick: _cache[0] || (_cache[0] = function ($event) {
+                  return _ctx.$emit('toggleFavorite', $setup.props.id);
+                }),
                 "class": "tw-pt-1 tw-cursor-pointer",
                 size: "35",
                 style: {
@@ -23024,9 +22977,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 _: 1
                 /* STABLE */
 
-              })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$setup.isFavorite ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_v_icon, {
+              })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$setup.props.isFavorite.value ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_v_icon, {
                 key: 1,
-                onClick: $setup.toggleFavorite,
+                onClick: _cache[1] || (_cache[1] = function ($event) {
+                  return _ctx.$emit('toggleFavorite', $setup.props.id);
+                }),
                 "class": "tw-pt-1 tw-cursor-pointer",
                 size: "35",
                 style: {
@@ -23058,18 +23013,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, _hoisted_5, _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
                 type: "number",
                 min: "0",
-                max: "{{props.mok}}",
+                max: "{{props.mokokosTotal}}",
                 "class": "tw-text-center tw-opacity-70 tw-bg-white tw-text-gray-700",
                 style: {
                   "width": "20px"
                 },
-                "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-                  return $setup.mokokoCollected = $event;
+                "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+                  return $setup.mokokosCollected = $event;
                 }),
                 maxlength: "1"
               }, null, 512
               /* NEED_PATCH */
-              ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.mokokoCollected]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_7, "of " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.mokokoTotal), 1
+              ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.mokokosCollected]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_7, "of " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.props.mokokosTotal), 1
               /* TEXT */
               )])];
             }),
@@ -23082,7 +23037,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, _hoisted_10, _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_switch, {
                 modelValue: $setup.soulGotten,
-                "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+                "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
                   return $setup.soulGotten = $event;
                 }),
                 color: "green",
@@ -23098,7 +23053,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "class": "tw-pt-2 justify-center align-center"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.description), 1
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.props.soulType), 1
               /* TEXT */
               ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_icon, {
                 "class": "tw-ml-auto tw-mr-2 tw-mb-1",
@@ -24323,51 +24278,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_row, null, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
-                cols: "4"
-              }, {
-                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["IslandCard"], (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.guardReactiveProps)($setup.island1)), null, 16
-                  /* FULL_PROPS */
-                  )];
-                }),
-                _: 1
-                /* STABLE */
+              return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.islandList, function (item) {
+                return (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
+                  cols: "4"
+                }, {
+                  "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                    return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["IslandCard"], (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)(item, {
+                      onToggleFavorite: $setup.toggleFavorite
+                    }), null, 16
+                    /* FULL_PROPS */
+                    )];
+                  }),
+                  _: 2
+                  /* DYNAMIC */
 
-              }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
-                cols: "4"
-              }, {
-                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["IslandCard"], (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.guardReactiveProps)($setup.island2)), null, 16
-                  /* FULL_PROPS */
-                  )];
-                }),
-                _: 1
-                /* STABLE */
-
-              }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
-                cols: "4"
-              }, {
-                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["IslandCard"], (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.guardReactiveProps)($setup.island3)), null, 16
-                  /* FULL_PROPS */
-                  )];
-                }),
-                _: 1
-                /* STABLE */
-
-              }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
-                cols: "4"
-              }, {
-                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["IslandCard"], (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeProps)((0,vue__WEBPACK_IMPORTED_MODULE_0__.guardReactiveProps)($setup.island4)), null, 16
-                  /* FULL_PROPS */
-                  )];
-                }),
-                _: 1
-                /* STABLE */
-
-              })];
+                }, 1024
+                /* DYNAMIC_SLOTS */
+                );
+              }), 64
+              /* STABLE_FRAGMENT */
+              ))];
             }),
             _: 1
             /* STABLE */

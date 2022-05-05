@@ -2,56 +2,29 @@
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
 import { Head } from '@inertiajs/inertia-vue3';
 import IslandCard from "@/Components/IslandCard";
+import {ref} from "vue";
+
 
 const island1 = {
     id: 1,
     title: "Alteisen",
     ilvl:250,
-    mokokoTotal:10,
-    mokokosCollected:2,
-    soulGotten: false,
-    isFavorite: false,
-    soulType: "RNG[Monster]",
+    mokokosTotal:10,
+    mokokosCollected:ref(2),
+    soulGotten: ref(false),
+    isFavorite: ref(false),
+    soulType: "RNG[Monster kills]",
     islandType:"Adventure",
 
 }
 
-const island2 = {
-    id: 1,
-    title: "Alakkir",
-    ilvl:250,
-    mokokoTotal:5,
-    mokokosCollected:1,
-    soulGotten: true,
-    isFavorite: false,
-    soulType: "Unas Task", //Unas Task
-    islandType:"Adventure",
 
-}
-const island3 = { //Gelb
-    id: 1,
-    title: "Lullaby",
-    ilvl:250,
-    mokokoTotal:8,
-    mokokosCollected:0,
-    soulGotten: false,
-    isFavorite: true,
-    soulType: "RNG[Monster]",
-    islandType:"Timed", //Timed
+const islandList = [island1];
 
-}
-
-const island4 = { //Gelb
-    id: 1,
-    title: "Lullyby",
-    ilvl:250,
-    mokokoTotal:5,
-    mokokosCollected:5,
-    soulGotten: true,
-    isFavorite: false,
-    soulType: "RNG[Monster]",
-    islandType:"Timed", //Timed
-
+function toggleFavorite(id){
+    let islandToChange = islandList.find(island => island.id === id);
+    islandToChange.isFavorite.value = !islandToChange.isFavorite.value;
+    console.log(island1.isFavorite.value);
 }
 
 </script>
@@ -73,17 +46,8 @@ const island4 = { //Gelb
                     <div class="tw-p-6 tw-bg-white dark:tw-bg-neutral-700">
                     <v-container>
                         <v-row>
-                            <v-col cols="4">
-                                <IslandCard v-bind="island1" />
-                            </v-col>
-                            <v-col cols="4">
-                                <IslandCard v-bind="island2" />
-                            </v-col>
-                            <v-col cols="4">
-                                <IslandCard v-bind="island3" />
-                            </v-col>
-                            <v-col cols="4">
-                                <IslandCard v-bind="island4" />
+                            <v-col v-for="item in islandList" cols="4">
+                                <IslandCard v-bind="item" @toggle-favorite="toggleFavorite" />
                             </v-col>
 
                         </v-row>
