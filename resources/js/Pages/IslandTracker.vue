@@ -12,15 +12,42 @@ const island1 = {
     ilvl:250,
     mokokosTotal:10,
     mokokosCollected:ref(2),
-    soulGotten: ref(true),
+    soulGotten: ref(false),
     isFavorite: ref(false),
     soulType: "RNG [Monster kills]",
     islandType:"Adventure Island",
 
 }
 
+const island2 = {
+    id: 2,
+    title: "Allakir",
+    ilvl:600,
+    mokokosTotal:3,
+    mokokosCollected:ref(2),
+    soulGotten: ref(false),
+    isFavorite: ref(false),
+    soulType: "RNG",
+    islandType:"Timed Island",
 
-const islandList = [island1];
+}
+
+const island3 = {
+    id: 3,
+    title: "Althertz",
+    ilvl:340,
+    mokokosTotal:5,
+    mokokosCollected:ref(2),
+    soulGotten: ref(false),
+    isFavorite: ref(false),
+    soulType: "Boom Boom",
+    islandType:"Adventure Island",
+
+}
+
+
+
+const islandList = [island1, island2, island3];
 
 function toggleFavorite(id){
     let islandToChange = islandList.find(island => island.id === id);
@@ -33,6 +60,14 @@ function updateMokoko(id, value){
     islandToChange.mokokosCollected.value = value;
     console.log(island1.mokokosCollected.value);
 }
+
+function toggleSoul(id){
+    let islandToChange = islandList.find(island => island.id === id);
+    islandToChange.soulGotten.value = !islandToChange.soulGotten.value;
+    console.log(island1.soulGotten.value);
+}
+
+
 </script>
 
 <template>
@@ -53,7 +88,7 @@ function updateMokoko(id, value){
                     <v-container>
                         <v-row>
                             <v-col v-for="item in islandList" :key="item.id" cols="4">
-                                <IslandCard v-bind="item" @toggle-favorite="toggleFavorite" @update-mokokos="updateMokoko"/>
+                                <IslandCard v-bind="item" @toggle-favorite="toggleFavorite" @update-mokokos="updateMokoko" @toggle-soul="toggleSoul"/>
                             </v-col>
 
                         </v-row>

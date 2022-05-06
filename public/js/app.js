@@ -21797,7 +21797,7 @@ __webpack_require__.r(__webpack_exports__);
     var cardClassObject = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(function () {
       return {
         'bg-red-darken-4': !props.soulGotten.value || !(props.mokokosTotal - props.mokokosCollected.value === 0),
-        'bg-amber-accent-4': props.isFavorite.value && !(props.soulGotten.value && props.mokokosTotal - props.mokokosCollected.value === 0),
+        'bg-orange-accent-3': props.isFavorite.value && !(props.soulGotten.value && props.mokokosTotal - props.mokokosCollected.value === 0),
         'bg-green-darken-3': props.soulGotten.value && props.mokokosTotal - props.mokokosCollected.value === 0
       };
     });
@@ -22504,12 +22504,34 @@ __webpack_require__.r(__webpack_exports__);
       ilvl: 250,
       mokokosTotal: 10,
       mokokosCollected: (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)(2),
-      soulGotten: (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)(true),
+      soulGotten: (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)(false),
       isFavorite: (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)(false),
       soulType: "RNG [Monster kills]",
       islandType: "Adventure Island"
     };
-    var islandList = [island1];
+    var island2 = {
+      id: 2,
+      title: "Allakir",
+      ilvl: 600,
+      mokokosTotal: 3,
+      mokokosCollected: (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)(2),
+      soulGotten: (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)(false),
+      isFavorite: (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)(false),
+      soulType: "RNG",
+      islandType: "Timed Island"
+    };
+    var island3 = {
+      id: 3,
+      title: "Althertz",
+      ilvl: 340,
+      mokokosTotal: 5,
+      mokokosCollected: (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)(2),
+      soulGotten: (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)(false),
+      isFavorite: (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)(false),
+      soulType: "Boom Boom",
+      islandType: "Adventure Island"
+    };
+    var islandList = [island1, island2, island3];
 
     function toggleFavorite(id) {
       var islandToChange = islandList.find(function (island) {
@@ -22527,11 +22549,22 @@ __webpack_require__.r(__webpack_exports__);
       console.log(island1.mokokosCollected.value);
     }
 
+    function toggleSoul(id) {
+      var islandToChange = islandList.find(function (island) {
+        return island.id === id;
+      });
+      islandToChange.soulGotten.value = !islandToChange.soulGotten.value;
+      console.log(island1.soulGotten.value);
+    }
+
     var __returned__ = {
       island1: island1,
+      island2: island2,
+      island3: island3,
       islandList: islandList,
       toggleFavorite: toggleFavorite,
       updateMokoko: updateMokoko,
+      toggleSoul: toggleSoul,
       BreezeAuthenticatedLayout: _Layouts_Authenticated_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
       Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Head,
       IslandCard: _Components_IslandCard__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -22944,8 +22977,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_avatar, {
                 "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["tw-outline tw-outline-2", {
-                  'tw-outline-green-800': $setup.props.soulGotten.value,
-                  'tw-outline-red-800': !$setup.props.soulGotten.value
+                  'tw-outline-green-800': $setup.props.soulGotten.value && $setup.props.mokokosTotal - $setup.props.mokokosCollected.value === 0,
+                  'tw-outline-red-800': !$setup.props.soulGotten.value || !($setup.props.mokokosTotal - $setup.props.mokokosCollected.value === 0),
+                  'tw-outline-amber-500': $setup.props.isFavorite.value && !($setup.props.soulGotten.value && $setup.props.mokokosTotal - $setup.props.mokokosCollected.value === 0)
                 }]),
                 size: "50"
               }, {
@@ -23065,9 +23099,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, _hoisted_11, _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_switch, {
+                "model-value": $setup.props.soulGotten.value,
+                onClick: _cache[3] || (_cache[3] = function ($event) {
+                  return _ctx.$emit('toggleSoul', $setup.props.id);
+                }),
                 color: "green",
                 "hide-details": ""
-              })])];
+              }, null, 8
+              /* PROPS */
+              , ["model-value"])])];
             }),
             _: 1
             /* STABLE */
@@ -24401,7 +24441,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                     return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["IslandCard"], (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)(item, {
                       onToggleFavorite: $setup.toggleFavorite,
-                      onUpdateMokokos: $setup.updateMokoko
+                      onUpdateMokokos: $setup.updateMokoko,
+                      onToggleSoul: $setup.toggleSoul
                     }), null, 16
                     /* FULL_PROPS */
                     )];

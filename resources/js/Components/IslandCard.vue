@@ -22,7 +22,7 @@ const props= defineProps([
 
 const cardClassObject = computed(() => ({
     'bg-red-darken-4': !props.soulGotten.value || !(props.mokokosTotal - props.mokokosCollected.value === 0),
-    'bg-amber-accent-4': props.isFavorite.value && !(props.soulGotten.value && props.mokokosTotal - props.mokokosCollected.value === 0),
+    'bg-orange-accent-3': props.isFavorite.value && !(props.soulGotten.value && props.mokokosTotal - props.mokokosCollected.value === 0),
     'bg-green-darken-3': props.soulGotten.value && (props.mokokosTotal - props.mokokosCollected.value === 0),
 }))
 
@@ -40,7 +40,11 @@ const cardClassObject = computed(() => ({
             <v-row class="tw-p-3">
                 <v-avatar
                     class="tw-outline tw-outline-2 " size="50"
-                    :class ="{'tw-outline-green-800':props.soulGotten.value, 'tw-outline-red-800':!props.soulGotten.value}"
+                    :class ="{
+                    'tw-outline-green-800':props.soulGotten.value && (props.mokokosTotal - props.mokokosCollected.value === 0),
+                    'tw-outline-red-800':!props.soulGotten.value || !(props.mokokosTotal - props.mokokosCollected.value === 0),
+                    'tw-outline-amber-500': props.isFavorite.value && !(props.soulGotten.value && props.mokokosTotal - props.mokokosCollected.value === 0),
+                    }"
                 >
                     <v-img src="https://d3planner-assets.maxroll.gg/lost-ark/icons/island_icon_12.png"></v-img>
 
@@ -79,10 +83,11 @@ const cardClassObject = computed(() => ({
                     <div class="text-body-1 text-grey-lighten-4 font-weight-medium tw-pl-2">Island Soul</div>
                     <div style="width: 50px"></div>
                     <v-switch
-
+                        :model-value="props.soulGotten.value"
+                        @click="$emit('toggleSoul', props.id)"
                         color="green"
                         hide-details
-                    ></v-switch>
+                    />
                 </div>
             </v-row>
             <v-row class="tw-pt-2 justify-center align-center">

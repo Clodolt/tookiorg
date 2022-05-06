@@ -545,6 +545,51 @@ Ensure the default browser behavior of the `hidden` attribute.
 .tw-mt-6 {
   margin-top: 1.5rem !important;
 }
+.tw-ml-3 {
+  margin-left: 0.75rem !important;
+}
+.tw-ml-4 {
+  margin-left: 1rem !important;
+}
+.tw-ml-auto {
+  margin-left: auto !important;
+}
+.tw-mr-2 {
+  margin-right: 0.5rem !important;
+}
+.tw-mb-1 {
+  margin-bottom: 0.25rem !important;
+}
+.tw-ml-3 {
+  margin-left: 0.75rem !important;
+}
+.tw-ml-4 {
+  margin-left: 1rem !important;
+}
+.tw-ml-auto {
+  margin-left: auto !important;
+}
+.tw-mr-2 {
+  margin-right: 0.5rem !important;
+}
+.tw-mb-1 {
+  margin-bottom: 0.25rem !important;
+}
+.tw-ml-3 {
+  margin-left: 0.75rem !important;
+}
+.tw-ml-4 {
+  margin-left: 1rem !important;
+}
+.tw-ml-auto {
+  margin-left: auto !important;
+}
+.tw-mr-2 {
+  margin-right: 0.5rem !important;
+}
+.tw-mb-1 {
+  margin-bottom: 0.25rem !important;
+}
 .tw-block {
   display: block !important;
 }
@@ -725,6 +770,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1 !important;
   background-color: rgb(238 242 255 / var(--tw-bg-opacity)) !important;
 }
+.tw-bg-orange-400 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(251 146 60 / var(--tw-bg-opacity)) !important;
+}
+.tw-bg-white {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity)) !important;
+}
 .tw-fill-current {
   fill: currentColor !important;
 }
@@ -736,6 +789,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .tw-p-2 {
   padding: 0.5rem !important;
+}
+.tw-p-3 {
+  padding: 0.75rem !important;
 }
 .tw-py-4 {
   padding-top: 1rem !important;
@@ -805,6 +861,42 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .tw-pt-6 {
   padding-top: 1.5rem !important;
+}
+.tw-pt-1 {
+  padding-top: 0.25rem !important;
+}
+.tw-pt-2 {
+  padding-top: 0.5rem !important;
+}
+.tw-pl-2 {
+  padding-left: 0.5rem !important;
+}
+.tw-pl-4 {
+  padding-left: 1rem !important;
+}
+.tw-pt-1 {
+  padding-top: 0.25rem !important;
+}
+.tw-pt-2 {
+  padding-top: 0.5rem !important;
+}
+.tw-pl-2 {
+  padding-left: 0.5rem !important;
+}
+.tw-pl-4 {
+  padding-left: 1rem !important;
+}
+.tw-pt-1 {
+  padding-top: 0.25rem !important;
+}
+.tw-pt-2 {
+  padding-top: 0.5rem !important;
+}
+.tw-pl-2 {
+  padding-left: 0.5rem !important;
+}
+.tw-pl-4 {
+  padding-left: 1rem !important;
 }
 .tw-text-left {
   text-align: left !important;
@@ -899,6 +991,30 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-text-opacity: 1 !important;
   color: rgb(31 41 55 / var(--tw-text-opacity)) !important;
 }
+.tw-text-white {
+  --tw-text-opacity: 1 !important;
+  color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
+}
+.tw-text-gray-700 {
+  --tw-text-opacity: 1 !important;
+  color: rgb(55 65 81 / var(--tw-text-opacity)) !important;
+}
+.tw-text-white {
+  --tw-text-opacity: 1 !important;
+  color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
+}
+.tw-text-gray-700 {
+  --tw-text-opacity: 1 !important;
+  color: rgb(55 65 81 / var(--tw-text-opacity)) !important;
+}
+.tw-text-white {
+  --tw-text-opacity: 1 !important;
+  color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
+}
+.tw-text-gray-700 {
+  --tw-text-opacity: 1 !important;
+  color: rgb(55 65 81 / var(--tw-text-opacity)) !important;
+}
 .tw-underline {
   -webkit-text-decoration-line: underline !important;
           text-decoration-line: underline !important;
@@ -947,6 +1063,30 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .tw-outline-red-800 {
   outline-color: #991b1b !important;
+}
+.tw-outline-green-800 {
+  outline-color: #166534 !important;
+}
+.tw-outline-red-800 {
+  outline-color: #991b1b !important;
+}
+.tw-outline-green-800 {
+  outline-color: #166534 !important;
+}
+.tw-outline-red-800 {
+  outline-color: #991b1b !important;
+}
+.tw-outline-orange-500 {
+  outline-color: #f97316 !important;
+}
+.tw-outline-green-800 {
+  outline-color: #166534 !important;
+}
+.tw-outline-red-800 {
+  outline-color: #991b1b !important;
+}
+.tw-outline-amber-500 {
+  outline-color: #f59e0b !important;
 }
 .tw-ring-1 {
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color) !important;
