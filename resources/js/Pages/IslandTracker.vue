@@ -3,6 +3,7 @@ import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
 import { Head } from '@inertiajs/inertia-vue3';
 import IslandCard from "@/Components/IslandCard";
 import {ref} from "vue";
+import {watch} from "vue";
 
 
 const island1 = {
@@ -11,10 +12,10 @@ const island1 = {
     ilvl:250,
     mokokosTotal:10,
     mokokosCollected:ref(2),
-    soulGotten: ref(false),
+    soulGotten: ref(true),
     isFavorite: ref(false),
-    soulType: "RNG[Monster kills]",
-    islandType:"Adventure",
+    soulType: "RNG [Monster kills]",
+    islandType:"Adventure Island",
 
 }
 
@@ -27,6 +28,11 @@ function toggleFavorite(id){
     console.log(island1.isFavorite.value);
 }
 
+function updateMokoko(id, value){
+    let islandToChange = islandList.find(island => island.id === id);
+    islandToChange.mokokosCollected.value = value;
+    console.log(island1.mokokosCollected.value);
+}
 </script>
 
 <template>
@@ -46,8 +52,8 @@ function toggleFavorite(id){
                     <div class="tw-p-6 tw-bg-white dark:tw-bg-neutral-700">
                     <v-container>
                         <v-row>
-                            <v-col v-for="item in islandList" cols="4">
-                                <IslandCard v-bind="item" @toggle-favorite="toggleFavorite" />
+                            <v-col v-for="item in islandList" :key="item.id" cols="4">
+                                <IslandCard v-bind="item" @toggle-favorite="toggleFavorite" @update-mokokos="updateMokoko"/>
                             </v-col>
 
                         </v-row>

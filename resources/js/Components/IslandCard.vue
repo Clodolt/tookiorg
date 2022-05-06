@@ -1,6 +1,6 @@
 <script setup>
 
-import {ref} from "vue";
+import {ref, watch} from "vue";
 import {computed} from "vue";
 
 const props= defineProps([
@@ -18,15 +18,12 @@ const props= defineProps([
 
 
 
-let soulGotten = ref(false);
-let isFavorite = ref(false);
-let mokokosTotal = ref(8);
-let mokokosCollected = ref(2);
+
 
 const cardClassObject = computed(() => ({
-    'bg-red-darken-4': !props.soulGotten.value || !(props.mokokosTotal.value - props.mokokosCollected.value === 0),
-    'bg-amber-accent-4': props.isFavorite.value && !(props.soulGotten.value && props.mokokosTotal.value - props.mokokosCollected.value === 0),
-    'bg-green-darken-3': props.soulGotten.value && (props.mokokosTotal.value - props.mokokosCollected.value === 0),
+    'bg-red-darken-4': !props.soulGotten.value || !(props.mokokosTotal - props.mokokosCollected.value === 0),
+    'bg-amber-accent-4': props.isFavorite.value && !(props.soulGotten.value && props.mokokosTotal - props.mokokosCollected.value === 0),
+    'bg-green-darken-3': props.soulGotten.value && (props.mokokosTotal - props.mokokosCollected.value === 0),
 }))
 
 
@@ -68,7 +65,10 @@ const cardClassObject = computed(() => ({
                     <img class="tw-ml-4" alt="mokoko icon" width="28" src="/assets/mokoko.png"/>
                     <div class="text-body-1 text-grey-lighten-5 font-weight-medium tw-pl-2">Mokokos</div>
                     <div style="width: 50px"></div>
-                    <input type="number" min="0" max="{{props.mokokosTotal}}" class="tw-text-center tw-opacity-70 tw-bg-white tw-text-gray-700" style="width:20px" v-model="mokokosCollected" maxlength="1" />
+                    <input :value="props.mokokosCollected.value"
+                           @input="$emit('updateMokokos',props.id, $event.target.value)"
+                           type="number" min="0" max="{{props.mokokosTotal}}"
+                           class="tw-text-center tw-opacity-70 tw-bg-white tw-text-gray-700" style="width:20px"  maxlength="1" />
                     <p class="tw-pl-2">of {{props.mokokosTotal}}</p>
                 </div>
             </v-row>
@@ -79,7 +79,7 @@ const cardClassObject = computed(() => ({
                     <div class="text-body-1 text-grey-lighten-4 font-weight-medium tw-pl-2">Island Soul</div>
                     <div style="width: 50px"></div>
                     <v-switch
-                        v-model="soulGotten"
+
                         color="green"
                         hide-details
                     ></v-switch>
