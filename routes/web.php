@@ -30,6 +30,6 @@ Route::get('/islandtracker', function () {
 
 Route::get('/maris', function () {
     return Inertia::render('MarisShop');
-});
+})->name('marisshop');;
 
 require __DIR__.'/auth.php';

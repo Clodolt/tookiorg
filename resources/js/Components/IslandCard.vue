@@ -17,9 +17,6 @@ const props= defineProps([
 ])
 
 
-
-
-
 const cardClassObject = computed(() => ({
     'bg-red-darken-4': !props.soulGotten.value || !(props.mokokosTotal - props.mokokosCollected.value === 0),
     'bg-orange-accent-3': props.isFavorite.value && !(props.soulGotten.value && props.mokokosTotal - props.mokokosCollected.value === 0),

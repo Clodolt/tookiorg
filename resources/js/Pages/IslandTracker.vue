@@ -2,9 +2,9 @@
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
 import { Head } from '@inertiajs/inertia-vue3';
 import IslandCard from "@/Components/IslandCard";
-import {ref} from "vue";
-import {watch} from "vue";
+import {computed, ref} from "vue";
 
+const filterText=ref('')
 
 const island1 = {
     id: 1,
@@ -46,8 +46,14 @@ const island3 = {
 }
 
 
-
 const islandList = [island1, island2, island3];
+
+const filteredList = computed(() => {
+    return islandList.filter( island =>
+        island.title.toLowerCase().includes(filterText.value.toLowerCase())
+    )
+})
+
 
 function toggleFavorite(id){
     let islandToChange = islandList.find(island => island.id === id);
@@ -68,6 +74,7 @@ function toggleSoul(id){
 }
 
 
+
 </script>
 
 <template>
@@ -75,9 +82,7 @@ function toggleSoul(id){
 
     <BreezeAuthenticatedLayout>
         <template #header>
-            <h2 class="tw-font-semibold tw-text-xl tw-text-gray-800 tw-leading-tight dark:tw-text-white dark:tw-bg-neutral-700">
-                Island Tracker
-            </h2>
+            <input class="search-box" type="text" v-model="filterText" placeholder="Search Island"  style="outline: 1px solid gray"/>
 
         </template>
 
@@ -87,8 +92,8 @@ function toggleSoul(id){
                     <div class="tw-p-6 tw-bg-white dark:tw-bg-neutral-700">
                     <v-container>
                         <v-row>
-                            <v-col v-for="item in islandList" :key="item.id" cols="4">
-                                <IslandCard v-bind="item" @toggle-favorite="toggleFavorite" @update-mokokos="updateMokoko" @toggle-soul="toggleSoul"/>
+                            <v-col v-for="item in filteredList" :key="item.id" cols="4">
+                                <IslandCard v-bind="item" @toggle-favorite="toggleFavorite" @update-mokokos="updateMokoko" @toggle-soul="toggleSoul "/>
                             </v-col>
 
                         </v-row>

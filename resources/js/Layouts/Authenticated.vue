@@ -39,9 +39,7 @@ const showingNavigationDropdown = ref(false);
                         <div class="tw-flex">
                             <!-- Logo -->
                             <div class="flex-shrink-0 tw-flex tw-items-center">
-                                <Link :href="route('islandtracker')">
-                                    <v-img class="mr-3" src="/assets/Tooki.png" height="130px" width="130px" />
-                                </Link>
+                                    <img class="mr-3 mb-2" src="/assets/tooki.png" style="height:55px" />
                             </div>
 
                             <!-- Navigation Links -->
@@ -50,6 +48,12 @@ const showingNavigationDropdown = ref(false);
                                     Island Tracker
                                 </BreezeNavLink>
                             </div>
+                            <div class="tw-hidden sm:tw--my-px sm:tw-ml-10 sm:tw-flex">
+                                <BreezeNavLink class="dark:tw-text-white" :href="route('marisshop')" :active="route().current('marisshop')">
+                                    Mari's Shop
+                                </BreezeNavLink>
+                            </div>
+
                         </div>
 
                         <div class="tw-hidden sm:tw-flex sm:tw-items-center tw-ml-auto tw-mr-0">
