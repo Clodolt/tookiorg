@@ -590,6 +590,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 .tw-mb-1 {
   margin-bottom: 0.25rem !important;
 }
+.tw--mr-5 {
+  margin-right: -1.25rem !important;
+}
+.tw--mr-10 {
+  margin-right: -2.5rem !important;
+}
 .tw-block {
   display: block !important;
 }
@@ -626,6 +632,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .tw-h-20 {
   height: 5rem !important;
 }
+.tw-h-10 {
+  height: 2.5rem !important;
+}
 .tw-min-h-screen {
   min-height: 100vh !important;
 }
@@ -652,6 +661,15 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .tw-w-20 {
   width: 5rem !important;
+}
+.tw-w-80 {
+  width: 20rem !important;
+}
+.tw-w-3\/4 {
+  width: 75% !important;
+}
+.tw-w-1\/2 {
+  width: 50% !important;
 }
 .tw-max-w-6xl {
   max-width: 72rem !important;
@@ -716,6 +734,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .tw-rounded {
   border-radius: 0.25rem !important;
 }
+.tw-rounded-lg {
+  border-radius: 0.5rem !important;
+}
 .tw-border {
   border-width: 1px !important;
 }
@@ -778,6 +799,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1 !important;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity)) !important;
 }
+.tw-bg-neutral-700 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(64 64 64 / var(--tw-bg-opacity)) !important;
+}
+.tw-bg-white {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity)) !important;
+}
 .tw-fill-current {
   fill: currentColor !important;
 }
@@ -792,6 +821,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .tw-p-3 {
   padding: 0.75rem !important;
+}
+.tw-p-6 {
+  padding: 1.5rem !important;
 }
 .tw-py-4 {
   padding-top: 1rem !important;
@@ -1052,6 +1084,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color) !important;
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
 }
+.tw-shadow-sm {
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05) !important;
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color) !important;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
+}
 .tw-outline {
   outline-style: solid !important;
 }
@@ -1088,6 +1125,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .tw-outline-amber-500 {
   outline-color: #f59e0b !important;
 }
+.tw-outline-neutral-200 {
+  outline-color: #e5e5e5 !important;
+}
 .tw-ring-1 {
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color) !important;
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color) !important;
@@ -1099,6 +1139,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .tw-ring-opacity-5 {
   --tw-ring-opacity: 0.05 !important;
+}
+.tw-drop-shadow-lg {
+  --tw-drop-shadow: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1)) !important;
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow) !important;
 }
 .tw-transition {
   transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter !important;
@@ -1258,6 +1302,26 @@ input[type=number] {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity)) !important;
 }
+.tw-dark .dark\:tw-bg-neutral-700 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(64 64 64 / var(--tw-bg-opacity)) !important;
+}
+.tw-dark .dark\:tw-bg-neutral-800 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(38 38 38 / var(--tw-bg-opacity)) !important;
+}
+.tw-dark .dark\:tw-bg-neutral-700 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(64 64 64 / var(--tw-bg-opacity)) !important;
+}
+.tw-dark .dark\:tw-bg-neutral-800 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(38 38 38 / var(--tw-bg-opacity)) !important;
+}
+.tw-dark .dark\:tw-bg-neutral-700 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(64 64 64 / var(--tw-bg-opacity)) !important;
+}
 .tw-dark .dark\:tw-text-gray-500 {
   --tw-text-opacity: 1 !important;
   color: rgb(107 114 128 / var(--tw-text-opacity)) !important;
@@ -1273,6 +1337,14 @@ input[type=number] {
 .tw-dark .dark\:tw-text-neutral-100 {
   --tw-text-opacity: 1 !important;
   color: rgb(245 245 245 / var(--tw-text-opacity)) !important;
+}
+.tw-dark .dark\:tw-text-black {
+  --tw-text-opacity: 1 !important;
+  color: rgb(0 0 0 / var(--tw-text-opacity)) !important;
+}
+.tw-dark .dark\:tw-text-white {
+  --tw-text-opacity: 1 !important;
+  color: rgb(255 255 255 / var(--tw-text-opacity)) !important;
 }
 .tw-dark .dark\:hover\:tw-text-neutral-300:hover {
   --tw-text-opacity: 1 !important;

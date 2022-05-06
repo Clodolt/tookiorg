@@ -82,8 +82,13 @@ function toggleSoul(id){
 
     <BreezeAuthenticatedLayout>
         <template #header>
-            <input class="search-box" type="text" v-model="filterText" placeholder="Search Island"  style="outline: 1px solid gray"/>
+            <div class="tw-flex justify-center align-center">
+                <v-icon class="tw--mr-10 tw-z-50 tw-relative">
+                    mdi-magnify
+                </v-icon>
+                <input class="tw-h-10 tw-w-1/2 text-center tw-rounded-lg tw-drop-shadow-lg tw-bg-white dark:tw-bg-neutral-800 dark:tw-text-white pl-3" type="text" v-model="filterText" placeholder="Search Islands" />
 
+            </div>
         </template>
 
         <div class="tw-py-12">
