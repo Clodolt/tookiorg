@@ -22625,41 +22625,46 @@ __webpack_require__.r(__webpack_exports__);
     var expose = _ref.expose;
     expose();
     var goldToGem = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)(500);
-    var filterTier = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)('All');
-    var filterType = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)('All');
+    var filterTier = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)('');
+    var filterType = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)('');
     var item1 = {
       name: 'Destruction Stone Crystal',
       img: 'https://d3planner-assets.maxroll.gg/lost-ark/icons/use_6_105.png',
-      tier: 'Tier 1',
-      type: 'Honing Materials',
+      tier: 'Tier 3',
+      type: 'Honing Stones',
       bundleSize: 500,
       crystalPrice: 300
     };
     var item2 = {
       name: 'Guardian Stone Crystal',
       img: 'https://d3planner-assets.maxroll.gg/lost-ark/icons/use_6_104.png',
-      tier: 'Tier 1',
-      type: 'Honing Materials',
+      tier: 'Tier 3',
+      type: 'Honing Stones',
       bundleSize: 1000,
       crystalPrice: 270
     };
     var item3 = {
       name: 'Honor Leapstone',
       img: 'https://d3planner-assets.maxroll.gg/lost-ark/icons/use_7_155.png',
-      tier: 'Tier 1',
-      type: 'Honing Materials',
+      tier: 'Tier 3',
+      type: 'Leapstones',
       bundleSize: 20,
       crystalPrice: 40
     };
     var item4 = {
       name: 'Great Honor Leapstone',
       img: 'https://d3planner-assets.maxroll.gg/lost-ark/icons/use_7_156.png',
-      tier: 'Tier 1',
-      type: 'Honing Materials',
+      tier: 'Tier 3',
+      type: 'Leapstones',
       bundleSize: 5,
       crystalPrice: 50
     };
     var itemList = [item1, item2, item3, item4];
+    var filteredList = (0,vue__WEBPACK_IMPORTED_MODULE_3__.computed)(function () {
+      return itemList.filter(function (item) {
+        return item.tier.toLowerCase().includes(filterTier.value.toLowerCase()) && item.type.toLowerCase().includes(filterType.value.toLowerCase());
+      });
+    });
     var __returned__ = {
       goldToGem: goldToGem,
       filterTier: filterTier,
@@ -22669,10 +22674,12 @@ __webpack_require__.r(__webpack_exports__);
       item3: item3,
       item4: item4,
       itemList: itemList,
+      filteredList: filteredList,
       Layout: _Layouts_Authenticated_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
       Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Head,
       MarisItem: _Components_MarisItem__WEBPACK_IMPORTED_MODULE_2__["default"],
-      ref: vue__WEBPACK_IMPORTED_MODULE_3__.ref
+      ref: vue__WEBPACK_IMPORTED_MODULE_3__.ref,
+      computed: vue__WEBPACK_IMPORTED_MODULE_3__.computed
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -24702,6 +24709,7 @@ var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  value: "",
   selected: "selected"
 }, "All", -1
 /* HOISTED */
@@ -24726,11 +24734,12 @@ var _hoisted_18 = {
 
 var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "tw-mr-2 dark:tw-text-white"
-}, "Type", -1
+}, "Type:", -1
 /* HOISTED */
 );
 
 var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  value: "",
   selected: "selected"
 }, "All", -1
 /* HOISTED */
@@ -24782,7 +24791,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 512
       /* NEED_PATCH */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.goldToGem]]), _hoisted_8, _hoisted_9, _hoisted_10]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
-        "class": "tw-h-10 tw-p-1 text-center tw-rounded-lg tw-drop-shadow-lg tw-bg-white dark:tw-bg-neutral-800 dark:tw-text-white",
+        "class": "tw-h-10 tw-p-2 text-center tw-rounded-lg tw-drop-shadow-lg tw-bg-white dark:tw-bg-neutral-800 dark:tw-text-white",
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
           return $setup.filterTier = $event;
         })
@@ -24807,9 +24816,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     "class": "tw-bg-white dark:tw-bg-neutral-700"
                   }, {
                     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                      return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.itemList.filter(function (item) {
-                        return item.type === 'Honing Materials';
-                      }), function (item) {
+                      return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.filteredList, function (item) {
                         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["MarisItem"], (0,vue__WEBPACK_IMPORTED_MODULE_0__.mergeProps)({
                           "class": "tw-mt-1"
                         }, item, {

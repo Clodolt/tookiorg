@@ -2,17 +2,18 @@
 import Layout from '@/Layouts/Authenticated.vue';
 import { Head } from '@inertiajs/inertia-vue3';
 import MarisItem from "@/Components/MarisItem";
-import {ref} from "vue";
+import {ref, computed} from "vue";
+
 
 let goldToGem = ref(500);
-let filterTier = ref('All');
-let filterType = ref('All');
+let filterTier = ref('');
+let filterType = ref('');
 
 const item1 = {
     name: 'Destruction Stone Crystal',
     img: 'https://d3planner-assets.maxroll.gg/lost-ark/icons/use_6_105.png',
-    tier: 'Tier 1',
-    type: 'Honing Materials',
+    tier: 'Tier 3',
+    type: 'Honing Stones',
     bundleSize: 500,
     crystalPrice: 300
 }
@@ -20,29 +21,34 @@ const item1 = {
 const item2 = {
     name: 'Guardian Stone Crystal',
     img: 'https://d3planner-assets.maxroll.gg/lost-ark/icons/use_6_104.png',
-    tier: 'Tier 1',
-    type: 'Honing Materials',
+    tier: 'Tier 3',
+    type: 'Honing Stones',
     bundleSize: 1000,
     crystalPrice: 270
 }
 const item3 = {
     name: 'Honor Leapstone',
     img: 'https://d3planner-assets.maxroll.gg/lost-ark/icons/use_7_155.png',
-    tier: 'Tier 1',
-    type: 'Honing Materials',
+    tier: 'Tier 3',
+    type: 'Leapstones',
     bundleSize: 20,
     crystalPrice: 40
 }
 const item4 = {
     name: 'Great Honor Leapstone',
     img: 'https://d3planner-assets.maxroll.gg/lost-ark/icons/use_7_156.png',
-    tier: 'Tier 1',
-    type: 'Honing Materials',
+    tier: 'Tier 3',
+    type: 'Leapstones',
     bundleSize: 5,
     crystalPrice: 50
 }
 
 let itemList = [item1, item2, item3, item4]
+const filteredList = computed(() => {
+    return itemList.filter( item =>
+        item.tier.toLowerCase().includes(filterTier.value.toLowerCase()) && item.type.toLowerCase().includes(filterType.value.toLowerCase())
+    )
+})
 
 </script>
 
@@ -69,8 +75,8 @@ let itemList = [item1, item2, item3, item4]
                             </div>
                             <div class="tw-flex tw-ml-6  align-center ml-auto">
                                 <p class="tw-mr-2 dark:tw-text-white">Tier:</p>
-                                <select class="tw-h-10 tw-p-1 text-center tw-rounded-lg tw-drop-shadow-lg tw-bg-white dark:tw-bg-neutral-800 dark:tw-text-white" v-model="filterTier">
-                                    <option selected="selected">All</option>
+                                <select class="tw-h-10 tw-p-2 text-center tw-rounded-lg tw-drop-shadow-lg tw-bg-white dark:tw-bg-neutral-800 dark:tw-text-white" v-model="filterTier">
+                                    <option value="" selected="selected">All</option>
                                     <option>Tier 1</option>
                                     <option>Tier 2</option>
                                     <option>Tier 3</option>
@@ -78,9 +84,9 @@ let itemList = [item1, item2, item3, item4]
 
                             </div>
                             <div class="tw-flex tw-ml-6 tw-mr-5 align-center">
-                                <p class="tw-mr-2 dark:tw-text-white">Type</p>
+                                <p class="tw-mr-2 dark:tw-text-white">Type:</p>
                                 <select class="tw-h-10 tw-p-1 text-center tw-rounded-lg tw-drop-shadow-lg tw-bg-white dark:tw-bg-neutral-800 dark:tw-text-white" v-model="filterType">
-                                    <option selected="selected">All</option>
+                                    <option value="" selected="selected">All</option>
                                     <option>Leapstones</option>
                                     <option>Shard Pouches</option>
                                     <option>Honing Stones</option>
@@ -95,7 +101,7 @@ let itemList = [item1, item2, item3, item4]
                             <v-row>
                                 <v-col>
                                     <v-list class="tw-bg-white dark:tw-bg-neutral-700">
-                                        <MarisItem class="tw-mt-1" v-for="item in itemList.filter(item => item.type==='Honing Materials')" v-bind="item" :goldToGem="goldToGem"></MarisItem>
+                                        <MarisItem class="tw-mt-1" v-for="item in filteredList" v-bind="item" :goldToGem="goldToGem"></MarisItem>
                                     </v-list>
                                 </v-col>
                             </v-row>
