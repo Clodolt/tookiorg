@@ -21859,7 +21859,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['name', 'img', 'type', 'bundleSize', 'crystalPrice', 'goldToGem'],
+  props: ['name', 'img', 'tier', 'type', 'bundleSize', 'crystalPrice', 'goldToGem'],
   setup: function setup(__props, _ref) {
     var expose = _ref.expose;
     expose();
@@ -22625,9 +22625,12 @@ __webpack_require__.r(__webpack_exports__);
     var expose = _ref.expose;
     expose();
     var goldToGem = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)(500);
+    var filterTier = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)('All');
+    var filterType = (0,vue__WEBPACK_IMPORTED_MODULE_3__.ref)('All');
     var item1 = {
       name: 'Destruction Stone Crystal',
       img: 'https://d3planner-assets.maxroll.gg/lost-ark/icons/use_6_105.png',
+      tier: 'Tier 1',
       type: 'Honing Materials',
       bundleSize: 500,
       crystalPrice: 300
@@ -22635,6 +22638,7 @@ __webpack_require__.r(__webpack_exports__);
     var item2 = {
       name: 'Guardian Stone Crystal',
       img: 'https://d3planner-assets.maxroll.gg/lost-ark/icons/use_6_104.png',
+      tier: 'Tier 1',
       type: 'Honing Materials',
       bundleSize: 1000,
       crystalPrice: 270
@@ -22642,6 +22646,7 @@ __webpack_require__.r(__webpack_exports__);
     var item3 = {
       name: 'Honor Leapstone',
       img: 'https://d3planner-assets.maxroll.gg/lost-ark/icons/use_7_155.png',
+      tier: 'Tier 1',
       type: 'Honing Materials',
       bundleSize: 20,
       crystalPrice: 40
@@ -22649,6 +22654,7 @@ __webpack_require__.r(__webpack_exports__);
     var item4 = {
       name: 'Great Honor Leapstone',
       img: 'https://d3planner-assets.maxroll.gg/lost-ark/icons/use_7_156.png',
+      tier: 'Tier 1',
       type: 'Honing Materials',
       bundleSize: 5,
       crystalPrice: 50
@@ -22656,6 +22662,8 @@ __webpack_require__.r(__webpack_exports__);
     var itemList = [item1, item2, item3, item4];
     var __returned__ = {
       goldToGem: goldToGem,
+      filterTier: filterTier,
+      filterType: filterType,
       item1: item1,
       item2: item2,
       item3: item3,
@@ -23361,7 +23369,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* STABLE */
 
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-        "class": "tw-h-10 tw-w-1/6 text-center tw-rounded-lg tw-drop-shadow-lg tw-bg-white dark:tw-bg-neutral-800 dark:tw-text-white",
+        "class": "tw-h-10 tw-w-1/6 text-center tw-rounded-lg tw-drop-shadow-lg tw-bg-white dark:tw-bg-neutral-800 dark:tw-text-white mr-2",
         type: "text",
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
           return $setup.marketPrice = $event;
@@ -24649,10 +24657,13 @@ var _hoisted_5 = {
   "class": "tw-p-6 tw-bg-white dark:tw-bg-neutral-700"
 };
 var _hoisted_6 = {
-  "class": "tw-flex tw-bg-white dark:tw-bg-neutral-700 align-center justify-center"
+  "class": "tw-flex tw-bg-white dark:tw-bg-neutral-700 align-center justify-space-between"
+};
+var _hoisted_7 = {
+  "class": "tw-flex tw-ml-6 align-center"
 };
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   src: "https://d3planner-assets.maxroll.gg/lost-ark/icons/money_4.png",
   "class": "tw-pl-2",
   style: {
@@ -24663,13 +24674,13 @@ var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "dark:tw-text-white tw-pl-2"
 }, "equals 95", -1
 /* HOISTED */
 );
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   src: "/assets/blue_crystal_ccexpress.png",
   "class": "tw-pl-2",
   style: {
@@ -24680,8 +24691,70 @@ var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_10 = {
-  "class": "tw-p-6 tw-bg-white dark:tw-bg-neutral-700"
+var _hoisted_11 = {
+  "class": "tw-flex tw-ml-6 align-center ml-auto"
+};
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "tw-mr-2 dark:tw-text-white"
+}, "Tier:", -1
+/* HOISTED */
+);
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  selected: "selected"
+}, "All", -1
+/* HOISTED */
+);
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", null, "Tier 1", -1
+/* HOISTED */
+);
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", null, "Tier 2", -1
+/* HOISTED */
+);
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", null, "Tier 3", -1
+/* HOISTED */
+);
+
+var _hoisted_17 = [_hoisted_13, _hoisted_14, _hoisted_15, _hoisted_16];
+var _hoisted_18 = {
+  "class": "tw-flex tw-ml-6 tw-mr-5 align-center"
+};
+
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "tw-mr-2 dark:tw-text-white"
+}, "Type", -1
+/* HOISTED */
+);
+
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  selected: "selected"
+}, "All", -1
+/* HOISTED */
+);
+
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", null, "Leapstones", -1
+/* HOISTED */
+);
+
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", null, "Shard Pouches", -1
+/* HOISTED */
+);
+
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", null, "Honing Stones", -1
+/* HOISTED */
+);
+
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", null, "Honing Support", -1
+/* HOISTED */
+);
+
+var _hoisted_25 = [_hoisted_20, _hoisted_21, _hoisted_22, _hoisted_23, _hoisted_24];
+var _hoisted_26 = {
+  "class": "tw-pb-6 tw-pl-6 tw-pr-6 tw-bg-white dark:tw-bg-neutral-700"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_v_list = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-list");
@@ -24699,8 +24772,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [_hoisted_1];
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-        "class": "tw-h-10 tw-w-1/12 text-center tw-rounded-lg tw-drop-shadow-lg tw-bg-white dark:tw-bg-neutral-800 dark:tw-text-white",
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        "class": "tw-h-10 tw-w-1/4 text-center tw-rounded-lg tw-drop-shadow-lg tw-bg-white dark:tw-bg-neutral-800 dark:tw-text-white",
         type: "text",
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
           return $setup.goldToGem = $event;
@@ -24708,7 +24781,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         placeholder: "Gold To Gem rate"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.goldToGem]]), _hoisted_7, _hoisted_8, _hoisted_9])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_container, null, {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.goldToGem]]), _hoisted_8, _hoisted_9, _hoisted_10]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+        "class": "tw-h-10 tw-p-1 text-center tw-rounded-lg tw-drop-shadow-lg tw-bg-white dark:tw-bg-neutral-800 dark:tw-text-white",
+        "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+          return $setup.filterTier = $event;
+        })
+      }, _hoisted_17, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.filterTier]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+        "class": "tw-h-10 tw-p-1 text-center tw-rounded-lg tw-drop-shadow-lg tw-bg-white dark:tw-bg-neutral-800 dark:tw-text-white",
+        "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+          return $setup.filterType = $event;
+        })
+      }, _hoisted_25, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.filterType]])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_container, {
+        "class": "tw-bg-white dark:tw-bg-neutral-700"
+      }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_row, null, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
