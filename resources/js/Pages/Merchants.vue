@@ -19,8 +19,9 @@ const notify = (wei) =>{
     }
 }
 
-let notifyFilter = ref(JSON.parse(localStorage.getItem("notifyFilter"))) ?? ref({
-    rapport: true,
+let notifyFilter = ref(
+    JSON.parse(localStorage.getItem("notifyFilter")) ?? {
+    rapport: false,
     card: ['Wei', 'Seria']
 })
 
