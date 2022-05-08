@@ -12,3 +12,13 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance:textfield; /* Firefox */
 }
+
+.zone-pic {
+    position: absolute;
+    left: -9999px;
+}
+
+.zone-name:hover .zone-pic {
+    left: 200px;
+    top: -150px;
+}
