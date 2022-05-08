@@ -17,7 +17,7 @@ let now = ref(new Date());
 
 
 let timeTilMerchant = computed(()=>{
-    if(now.value.getMinutes() > 55) {
+    if(now.value.getMinutes() >= 55) {
         return (60-(Math.abs(30 - now.value.getMinutes()))).toString() + ' Minutes and ' + (60 - now.value.getSeconds()) + ' Seconds'
     }
     return (30 - now.value.getMinutes()).toString() + ' Minutes and ' + (60 - now.value.getSeconds()) + ' Seconds'
@@ -56,7 +56,7 @@ watch([filterRegion, filterServer], ([newRegion, newServer]) => {
     <Layout>
         <template #header>
             <h2 class="tw-font-semibold tw-text-xl tw-text-gray-800 tw-leading-tight dark:tw-text-white dark:tw-bg-neutral-700">
-                Mari's Shop Calculator
+                Wandering Merchant Tracker
             </h2>
         </template>
 
