@@ -1,15 +1,16 @@
 <script setup>
 
-import {computed, ref} from "vue";
+import {computed, onMounted, ref} from "vue";
 
 const props = defineProps([
     'name',
     'zone',
     'card',
     'rapport',
-    'votes'
+    'votes',
+    'notifyFilter'
 ])
-
+const emit = defineEmits(['notify'])
 const cardRarityClassObject = computed(() => ({
     'tw-text-lime-500': props.card.rarity === 1,
     'tw-text-blue-500': props.card.rarity === 2,
@@ -17,6 +18,19 @@ const cardRarityClassObject = computed(() => ({
     'tw-text-amber-500': props.card.rarity === 4,
 }))
 
+onMounted(()=>{
+    if(props.rapport.rarity === 4 && props.notifyFilter.rapport) {
+        emit('notify');
+    }
+    if(props.notifyFilter.card.some(cardName => cardName === props.card.name)) {
+        if(props.card.name === 'Wei') {
+            emit('notify', true);
+        } else {
+            emit('notify', false);
+        }
+
+    }
+})
 
 let nextReset = new Date();
 nextReset.setMinutes(55);
@@ -30,17 +44,13 @@ const dialog = ref(false);
 <template>
     <v-list-item class="tw-flex tw-bg-neutral-100 dark:tw-bg-neutral-600 tw-mt-3">
         <v-col cols="4">
-            <v-list-item-title class="dark:tw-text-white">{{ name }}</v-list-item-title>
-            <!--
-
-            -->
-
             <v-dialog
                 v-model="dialog"
                 width="500"
             >
                 <template v-slot:activator="{ on, attrs }">
                     <a class="tw-cursor-pointer" @click="dialog = true">
+                        <v-list-item-title class="dark:tw-text-white">{{ name }}</v-list-item-title>
                         <v-list-item-subtitle class="zone-name dark:tw-text-neutral-100">
                             {{ zone }}
                         </v-list-item-subtitle></a>
