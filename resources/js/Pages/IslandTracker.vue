@@ -5,6 +5,8 @@ import IslandCard from "@/Components/IslandCard";
 import {computed, ref} from "vue";
 
 const filterText=ref('')
+let showFilter = ref('');
+let soulTypeFilter = ref('');
 
 const island1 = {
     id: 1,
@@ -14,7 +16,7 @@ const island1 = {
     mokokosCollected:ref(2),
     soulGotten: ref(false),
     isFavorite: ref(false),
-    soulType: "RNG [Monster kills]",
+    soulType: "RNG",
     islandType:"Adventure Island",
 
 }
@@ -34,13 +36,13 @@ const island2 = {
 
 const island3 = {
     id: 3,
-    title: "Althertz",
+    title: "Kaltherz",
     ilvl:340,
     mokokosTotal:5,
     mokokosCollected:ref(2),
     soulGotten: ref(false),
     isFavorite: ref(false),
-    soulType: "Boom Boom",
+    soulType: "Una's Task",
     islandType:"Adventure Island",
 
 }
@@ -49,11 +51,51 @@ const island3 = {
 const islandList = [island1, island2, island3];
 
 const filteredList = computed(() => {
-    return islandList.filter( island =>
-        island.title.toLowerCase().includes(filterText.value.toLowerCase())
-    )
+    return islandList
+        .sort()
+        .filter(
+            island =>
+                island.title.toLowerCase().includes(filterText.value.toLowerCase())
+        )
+        .filter(
+            island => {
+                if (soulTypeFilter.value)
+                    return island.soulType === soulTypeFilter.value
+                return island
+            }
+        )
+        .filter(
+            island => {
+                if (showFilter.value === 'completed')
+                    return island.soulGotten.value && (island.mokokosTotal - island.mokokosCollected.value === 0)
+                if (showFilter.value === 'incomplete')
+                    return !island.soulGotten.value || !(island.mokokosTotal - island.mokokosCollected.value === 0)
+                if (showFilter.value === 'favorites')
+                    return island.isFavorite.value && !(island.soulGotten.value && island.mokokosTotal - island.mokokosCollected.value === 0)
+                return island
+            }
+        )
+        /*
+        .sort((a,b) => {
+            if(a.isFavorite.value && b.isFavorite.value) {
+                return 0;
+            } else if(a.isFavorite.value && !b.isFavorite.value){
+                return -1;
+            }else{
+                return 1;
+            }
+        })
+        */
+
 })
 
+
+const filterIslands = computed(() => {
+    return islandList.filter( island =>
+        island.title.toLowerCase().includes(filterText.value.toLowerCase())
+
+    )
+})
 
 function toggleFavorite(id){
     let islandToChange = islandList.find(island => island.id === id);
@@ -86,7 +128,23 @@ function toggleSoul(id){
                 <v-icon class="tw--mr-10 tw-z-50 tw-relative">
                     mdi-magnify
                 </v-icon>
-                <input class="tw-h-10 tw-w-1/2 text-center tw-rounded-lg tw-drop-shadow-lg tw-bg-white dark:tw-bg-neutral-800 dark:tw-text-white pl-3" type="text" v-model="filterText" placeholder="Search Islands" />
+                <input class="tw-h-10 tw-w-1/2 tw-mr-10 text-center tw-rounded-lg tw-drop-shadow-lg tw-bg-white dark:tw-bg-neutral-800 dark:tw-text-white pl-3" type="text" v-model="filterText" placeholder="Search Islands" />
+
+                <label class="tw-ml-3 tw--mr-3">Show:</label>
+                <select v-model="showFilter" name="show" class="tw-w-1/6 tw-h-10 tw-rounded-lg text-center tw-drop-shadow-lg tw-bg-white dark:tw-bg-neutral-800 dark:tw-text-white tw-ml-6">
+                    <option class="text-center" value=""> All </option>
+                    <option class="text-center" value="favorites"> Favorites </option>
+                    <option class="text-center" value="completed"> Completed </option>
+                    <option class="text-center" value="incomplete"> Incomplete </option>
+                </select>
+
+                <label class="tw-ml-3 tw--mr-3">Soul Type:</label>
+                <select v-model="soulTypeFilter" name="soulType" class="tw-w-1/6 tw-h-10 tw-rounded-lg tw-drop-shadow-lg tw-bg-white dark:tw-bg-neutral-800 dark:tw-text-white pl-3 tw-ml-6">
+
+                    <option class="text-center" value=""> All </option>
+                    <option class="text-center"> RNG </option>
+                    <option class="text-center"> Una's Task </option>
+                </select>
 
             </div>
         </template>
