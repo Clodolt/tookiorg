@@ -40,25 +40,25 @@ export const regions =
             name: 'EU Central',
             servers:
                 [
-                'Neria',
-                'Kadan',
-                'Trixion',
-                'Calvasus',
-                'Thirain',
-                'Zinnervale',
-                'Asta',
-                'Wei',
-                'Slen',
-                'Procyon',
-                'Sceptrum',
-                'Beatrice',
-                'Inanna',
-                'Thaemine',
-                'Sirius',
-                'Antares',
-                'Brelshaza',
-                'Nineveh',
-                'Mokoko',
+                    'Neria',
+                    'Kadan',
+                    'Trixion',
+                    'Calvasus',
+                    'Thirain',
+                    'Zinnervale',
+                    'Asta',
+                    'Wei',
+                    'Slen',
+                    'Procyon',
+                    'Sceptrum',
+                    'Beatrice',
+                    'Inanna',
+                    'Thaemine',
+                    'Sirius',
+                    'Antares',
+                    'Brelshaza',
+                    'Nineveh',
+                    'Mokoko',
                 ]
         },
         {
@@ -123,3 +123,4 @@ export const regions =
 
 
     ]
+

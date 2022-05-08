@@ -37,7 +37,7 @@ watch(marketPrice, (newPrice) => {
         </v-col>
 
         <div class="tw-flex justify-center align-center">
-            <input class="tw-h-10 tw-w-1/6 text-center tw-rounded-lg tw-drop-shadow-lg tw-bg-white dark:tw-bg-neutral-800 dark:tw-text-white mr-2" type="text" v-model="marketPrice" />
+            <input :id="name" class="tw-h-10 tw-w-1/6 text-center tw-rounded-lg tw-drop-shadow-lg tw-bg-white dark:tw-bg-neutral-800 dark:tw-text-white mr-2" type="text" v-model="marketPrice" />
             <img src="https://d3planner-assets.maxroll.gg/lost-ark/icons/money_4.png" style="height: 25px" alt="Gold">
             <p class="ml-1 dark:tw-text-white">per Unit on the Market</p>
         </div>
