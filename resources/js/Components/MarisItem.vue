@@ -1,5 +1,6 @@
 <script setup>
-import {computed, ref} from "vue";
+import {computed, ref, watch} from "vue";
+
 
 const props = defineProps([
     'name',
@@ -11,12 +12,18 @@ const props = defineProps([
     'goldToGem'
 ])
 
-let marketPrice = ref(0);
+
+let marketPrice = ref(Number(localStorage.getItem(props.name + 'Market')) ?? 0);
+
 
 let marisPrice = computed(()=> {
     return (((props.goldToGem / 95) * props.crystalPrice)/props.bundleSize).toFixed(2)
 })
 
+
+watch(marketPrice, (newPrice) => {
+    localStorage.setItem(props.name + 'Market', newPrice.toString());
+});
 
 </script>
 

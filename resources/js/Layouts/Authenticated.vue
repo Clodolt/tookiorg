@@ -53,6 +53,11 @@ const showingNavigationDropdown = ref(false);
                                     Mari's Shop
                                 </BreezeNavLink>
                             </div>
+                            <div class="tw-hidden sm:tw--my-px sm:tw-ml-10 sm:tw-flex">
+                                <BreezeNavLink class="dark:tw-text-white" :href="route('merchants')" :active="route().current('merchants')">
+                                    Merchant Tracker
+                                </BreezeNavLink>
+                            </div>
 
                         </div>
 
