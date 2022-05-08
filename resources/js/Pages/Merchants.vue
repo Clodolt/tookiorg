@@ -78,7 +78,7 @@ watch([filterRegion, filterServer], ([newRegion, newServer]) => {
                             <div v-if="filterRegion" class="tw-flex tw-ml-6 tw-mr-5 align-center">
                                 <p class="tw-mr-2 dark:tw-text-white">Server:</p>
                                 <select
-                                    class="tw-h-10 tw-p-1 text-center tw-rounded-lg tw-drop-shadow-lg tw-bg-white dark:tw-bg-neutral-800 dark:tw-text-white"
+                                    class="tw-h-10 tw-p-2 text-center tw-rounded-lg tw-drop-shadow-lg tw-bg-white dark:tw-bg-neutral-800 dark:tw-text-white"
                                     v-model="filterServer">
                                     <option v-for="server in regions.find(r => r.name === filterRegion).servers"
                                             v-text="server"></option>
