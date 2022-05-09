@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IslandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//Protected Routes
+//Route:group(['middleware' => ['auth:sanctum']], function(){
+  //  Route::post('/island', [IslandController::class, 'store']);
+    //Route::post('/island/{id}', [IslandController::class, 'update']);
+    //Route::post('/island{{id}', [IslandController::class, 'destroy']);
+//});
+
+
+
+//Public routes
+Route::get('/islands', [IslandController::class, 'index']);
+Route::get('/islands/{title}', [IslandController::class, 'show']);
+
+//Route::resource('island', IslandController::class);
