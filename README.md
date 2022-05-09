@@ -4,7 +4,7 @@ a live version is up at https://tooki.emmacarena.com/!
 
 ### Current Features:
 - Mari's Shop Calculator
-- Wandering Merchant Tracker
+- Wandering Merchant Tracker (with Notifications)
 - Island Tracker (BETA)
 - Persistant data across multitple devices (if logged in)
 
