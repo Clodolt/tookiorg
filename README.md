@@ -29,5 +29,7 @@ a live version is up at https://tooki.emmacarena.com/!
 
 ![image](https://user-images.githubusercontent.com/63547957/167400496-a8308466-66ec-4226-bf86-bbca2e89fe63.png)
 
+![image](https://user-images.githubusercontent.com/63547957/167401705-3da4f203-7b5b-4a0b-abd0-3a93fa154b82.png)
+
 ![image](https://user-images.githubusercontent.com/63547957/167400589-44e52e52-8647-4c2a-b582-4e6a80b778f5.png)
 
