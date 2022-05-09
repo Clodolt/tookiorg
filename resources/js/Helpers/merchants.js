@@ -29,7 +29,6 @@ export async function getMerchants(server) {
         return merchants;
     } catch (err) {
         console.log(err);
-        setTimeout(start, 5000);
     }
 };
 
