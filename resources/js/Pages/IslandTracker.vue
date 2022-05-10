@@ -64,10 +64,10 @@ const island3 = {
 }
 }*/
 
-let islandList = reactive([]);
+let islandList = ref([]);
 
 const filteredList = computed(() => {
-    return islandList
+    return islandList.value
         .sort()
         .filter(
             island =>
@@ -80,17 +80,17 @@ const filteredList = computed(() => {
                 return island
             }
         )
-/*        .filter(
+       .filter(
             island => {
                 if (showFilter.value === 'completed')
-                    return island.soulGotten.value && (island.mokokosTotal - island.mokokosCollected.value === 0)
+                    return island.pivot.soulGotten.value && (island.mokokosTotal - island.pivot.mokokosGotten.value === 0)
                 if (showFilter.value === 'incomplete')
-                    return !island.soulGotten.value || !(island.mokokosTotal - island.mokokosCollected.value === 0)
+                    return !island.pivot.soulGotten.value || !(island.mokokosTotal - island.pivot.mokokosGotten.value === 0)
                 if (showFilter.value === 'favorites')
-                    return island.isFavorite.value && !(island.soulGotten.value && island.mokokosTotal - island.mokokosCollected.value === 0)
+                    return island.pivot.isFavorite.value && !(island.pivot.soulGotten.value && island.mokokosTotal - island.pivot.mokokosGotten.value === 0)
                 return island
             }
-        )*/
+        )
         /*
         .sort((a,b) => {
             if(a.isFavorite.value && b.isFavorite.value) {
@@ -106,48 +106,34 @@ const filteredList = computed(() => {
 })
 
 
-const filterIslands = computed(() => {
-    return islandList.filter( island =>
-        island.title.toLowerCase().includes(filterText.value.toLowerCase())
-
-    )
-})
-
 function toggleFavorite(id){
-    let islandToChange = islandList.find(island => island.id === id);
-    islandToChange.isFavorite.value = !islandToChange.isFavorite.value;
-    console.log(island1.isFavorite.value);
+    let islandToChange = islandList.value.find(island => island.id === id);
+    islandToChange.pivot.isFavorite = !islandToChange.pivot.isFavorite;
+
 }
 
 function updateMokoko(id, value){
-    let islandToChange = islandList.find(island => island.id === id);
-    islandToChange.mokokosCollected.value = value;
-    console.log(island1.mokokosCollected.value);
+    let islandToChange = islandList.value.find(island => island.id === id);
+    islandToChange.pivot.mokokosCollected = value;
 }
 
 function toggleSoul(id){
-    let islandToChange = islandList.find(island => island.id === id);
-    islandToChange.soulGotten.value = !islandToChange.soulGotten.value;
-    console.log(island1.soulGotten.value);
+    let islandToChange = islandList.value.find(island => island.id === id);
+    islandToChange.pivot.soulGotten = !islandToChange.pivot.soulGotten;
 }
 
 
 function getIslands(url){
-    fetch(url)
-        .then(res => res.json())
-        .then((data)=>{
-            islandList = data;
-            console.log(islandList);
-        })
+    axios.get(url).then(res => {
+        islandList.value = res.data;
+
+    });
 
 }
 
 onBeforeMount(()=> {
     getIslands('/api/islands/1');
-
 })
-
-
 
 </script>
 
