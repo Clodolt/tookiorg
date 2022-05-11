@@ -2,13 +2,13 @@
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
 import { Head } from '@inertiajs/inertia-vue3';
 import IslandCard from "@/Components/IslandCard";
-import {computed, ref} from "vue";
+import {computed, onBeforeMount, onMounted, reactive, ref} from "vue";
 
 const filterText=ref('')
 let showFilter = ref('');
 let soulTypeFilter = ref('');
 
-const island1 = {
+/*const island1 = {
     id: 1,
     title: "Alteisen",
     ilvl:250,
@@ -46,9 +46,25 @@ const island3 = {
     islandType:"Adventure Island",
 
 }
+*/
 
+/*{
+    "id": 1,
+    "title": "Aiwana Island",
+    "ilvl": 250,
+    "mokokosTotal": 3,
+    "soulType": "Quest",
+    "islandType": "None",
+    "pivot": {
+        "user_id": 1,
+        "island_id": 1,
+        "isFavorite": 0,
+        "mokokosGotten": 0,
+        "soulGotten": 0
+}
+}*/
 
-const islandList = [island1, island2, island3];
+let islandList = reactive([]);
 
 const filteredList = computed(() => {
     return islandList
@@ -64,7 +80,7 @@ const filteredList = computed(() => {
                 return island
             }
         )
-        .filter(
+/*        .filter(
             island => {
                 if (showFilter.value === 'completed')
                     return island.soulGotten.value && (island.mokokosTotal - island.mokokosCollected.value === 0)
@@ -74,7 +90,7 @@ const filteredList = computed(() => {
                     return island.isFavorite.value && !(island.soulGotten.value && island.mokokosTotal - island.mokokosCollected.value === 0)
                 return island
             }
-        )
+        )*/
         /*
         .sort((a,b) => {
             if(a.isFavorite.value && b.isFavorite.value) {
@@ -114,6 +130,22 @@ function toggleSoul(id){
     islandToChange.soulGotten.value = !islandToChange.soulGotten.value;
     console.log(island1.soulGotten.value);
 }
+
+
+function getIslands(url){
+    fetch(url)
+        .then(res => res.json())
+        .then((data)=>{
+            islandList = data;
+            console.log(islandList);
+        })
+
+}
+
+onBeforeMount(()=> {
+    getIslands('/api/islands/1');
+
+})
 
 
 
