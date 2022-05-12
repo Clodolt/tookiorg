@@ -47,11 +47,11 @@ const cardClassObject = computed(() => ({
                     <v-card-title class="text-grey-lighten-5 tw-ml-3">{{props.title}}</v-card-title>
                     <v-card-subtitle class="text-grey-lighten-5 tw-ml-3">Item-Level: {{props.ilvl}}</v-card-subtitle>
                 </v-card-header-text>
-                <v-icon @click="$emit('toggleFavorite', props.id)" class="tw-pt-1 tw-cursor-pointer" size="35" style="color: #f5c542" v-if="props.pivot.isFavorite">
+                <v-icon @click="$emit('updateIsland', props, 'isFavorite', !props.pivot.isFavorite)" class="tw-pt-1 tw-cursor-pointer" size="35" style="color: #f5c542" v-if="props.pivot.isFavorite">
                     mdi-star
                 </v-icon>
 
-                <v-icon @click="$emit('toggleFavorite', props.id)" class="tw-pt-1 tw-cursor-pointer" size="35" style="color: #f5c542" v-if="!props.pivot.isFavorite">
+                <v-icon @click="$emit('updateIsland', props, 'isFavorite', !props.pivot.isFavorite)" class="tw-pt-1 tw-cursor-pointer" size="35" style="color: #f5c542" v-if="!props.pivot.isFavorite">
                     mdi-star-outline
                 </v-icon>
             </v-row>
@@ -64,7 +64,7 @@ const cardClassObject = computed(() => ({
                     <div class="text-body-1 text-grey-lighten-5 font-weight-medium tw-pl-2">Mokokos</div>
                     <div style="width: 50px"></div>
                     <input :value="props.pivot.mokokosGotten"
-                           @input="$emit('updateMokokos',props.id, $event.target.value)"
+                           @input="$emit('updateIsland',props, 'mokokosGotten', $event.target.value)"
                            type="number" min="0" max="{{props.mokokosTotal}}"
                            class="tw-text-center tw-opacity-70 tw-bg-white tw-text-gray-700" style="width:20px"  maxlength="1" />
                     <p class="tw-pl-2">of {{props.mokokosTotal}}</p>
@@ -76,9 +76,10 @@ const cardClassObject = computed(() => ({
                          src="https://d3planner-assets.maxroll.gg/lost-ark/icons/tokenitem_9.png"/>
                     <div class="text-body-1 text-grey-lighten-4 font-weight-medium tw-pl-2">Island Soul</div>
                     <div style="width: 50px"></div>
+                    <!-- TODO: FIX SWITCH -->
                     <v-switch
                         :model-value="props.pivot.soulGotten"
-                        @click="$emit('toggleSoul', props.id)"
+                        @click="$emit('updateIsland', props, 'soulGotten', !props.pivot.soulGotten)"
                         color="green"
                         hide-details
                     />

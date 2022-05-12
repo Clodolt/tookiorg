@@ -1,6 +1,6 @@
 <script setup>
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
-import { Head } from '@inertiajs/inertia-vue3';
+import {Head, usePage} from '@inertiajs/inertia-vue3';
 import IslandCard from "@/Components/IslandCard";
 import {computed, onBeforeMount, onMounted, reactive, ref} from "vue";
 
@@ -8,61 +8,12 @@ const filterText=ref('')
 let showFilter = ref('');
 let soulTypeFilter = ref('');
 
-/*const island1 = {
-    id: 1,
-    title: "Alteisen",
-    ilvl:250,
-    mokokosTotal:10,
-    mokokosCollected:ref(2),
-    soulGotten: ref(false),
-    isFavorite: ref(false),
-    soulType: "RNG",
-    islandType:"Adventure Island",
+const user = computed(()=>{
+    const user = usePage().props.value.auth.user;
+    return { user };
+})
 
-}
-
-const island2 = {
-    id: 2,
-    title: "Allakir",
-    ilvl:600,
-    mokokosTotal:3,
-    mokokosCollected:ref(2),
-    soulGotten: ref(false),
-    isFavorite: ref(false),
-    soulType: "RNG",
-    islandType:"Timed Island",
-
-}
-
-const island3 = {
-    id: 3,
-    title: "Kaltherz",
-    ilvl:340,
-    mokokosTotal:5,
-    mokokosCollected:ref(2),
-    soulGotten: ref(false),
-    isFavorite: ref(false),
-    soulType: "Una's Task",
-    islandType:"Adventure Island",
-
-}
-*/
-
-/*{
-    "id": 1,
-    "title": "Aiwana Island",
-    "ilvl": 250,
-    "mokokosTotal": 3,
-    "soulType": "Quest",
-    "islandType": "None",
-    "pivot": {
-        "user_id": 1,
-        "island_id": 1,
-        "isFavorite": 0,
-        "mokokosGotten": 0,
-        "soulGotten": 0
-}
-}*/
+const id = user.value.user.id;
 
 let islandList = ref([]);
 
@@ -83,11 +34,11 @@ const filteredList = computed(() => {
        .filter(
             island => {
                 if (showFilter.value === 'completed')
-                    return island.pivot.soulGotten.value && (island.mokokosTotal - island.pivot.mokokosGotten.value === 0)
+                    return island.pivot.soulGotten && (island.mokokosTotal - island.pivot.mokokosGotten === 0)
                 if (showFilter.value === 'incomplete')
-                    return !island.pivot.soulGotten.value || !(island.mokokosTotal - island.pivot.mokokosGotten.value === 0)
+                    return !island.pivot.soulGotten || !(island.mokokosTotal - island.pivot.mokokosGotten === 0)
                 if (showFilter.value === 'favorites')
-                    return island.pivot.isFavorite.value && !(island.pivot.soulGotten.value && island.mokokosTotal - island.pivot.mokokosGotten.value === 0)
+                    return island.pivot.isFavorite && !(island.pivot.soulGotten && island.mokokosTotal - island.pivot.mokokosGotten === 0)
                 return island
             }
         )
@@ -105,21 +56,14 @@ const filteredList = computed(() => {
 
 })
 
+function updateIsland(island, key, value){
+    let islandIndex = islandList.value.findIndex((item) => item.id === island.id);
+    islandList.value[islandIndex].pivot[key] = value;
 
-function toggleFavorite(id){
-    let islandToChange = islandList.value.find(island => island.id === id);
-    islandToChange.pivot.isFavorite = !islandToChange.pivot.isFavorite;
 
-}
-
-function updateMokoko(id, value){
-    let islandToChange = islandList.value.find(island => island.id === id);
-    islandToChange.pivot.mokokosGotten = value;
-}
-
-function toggleSoul(id){
-    let islandToChange = islandList.value.find(island => island.id === id);
-    islandToChange.pivot.soulGotten = !islandToChange.pivot.soulGotten;
+    axios.post('http://localhost:3000/api/islands/'+id, islandList.value[islandIndex]).then(res => {
+        });
+    getIslands(`http://localhost:3000/api/islands/${id}`);
 }
 
 
@@ -132,7 +76,7 @@ function getIslands(url){
 }
 
 onBeforeMount(()=> {
-    getIslands('/api/islands/1');
+    getIslands(`/api/islands/${id}`);
 })
 
 </script>
@@ -173,8 +117,8 @@ onBeforeMount(()=> {
                     <div class="tw-p-6 tw-bg-white dark:tw-bg-neutral-700">
                     <v-container>
                         <v-row>
-                            <v-col v-for="item in filteredList" :key="item.id" cols="4">
-                                <IslandCard v-bind="item" @toggle-favorite="toggleFavorite" @update-mokokos="updateMokoko" @toggle-soul="toggleSoul "/>
+                            <v-col v-for="item in filteredList" :key="item.title" cols="4">
+                                <IslandCard v-bind="item" @update-island="updateIsland"/>
                             </v-col>
 
                         </v-row>
