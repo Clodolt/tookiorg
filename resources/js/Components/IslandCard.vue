@@ -15,9 +15,9 @@ const props= defineProps([
 ])
 
 const cardClassObject = computed(() => ({
-    'bg-red-darken-4': !props.pivot.soulGotten || !(props.mokokosTotal - props.pivot.mokokosCollected === 0),
-    'bg-orange-accent-3': props.pivot.isFavorite && !(props.pivot.soulGotten && props.mokokosTotal - props.pivot.mokokosCollected === 0),
-    'bg-green-darken-3': props.pivot.soulGotten && (props.mokokosTotal - props.pivot.mokokosCollected === 0),
+    'bg-red-darken-4': !props.pivot.soulGotten || !(props.mokokosTotal - props.pivot.mokokosGotten === 0),
+    'bg-orange-accent-3': props.pivot.isFavorite && !(props.pivot.soulGotten && props.mokokosTotal - props.pivot.mokokosGotten === 0),
+    'bg-green-darken-3': props.pivot.soulGotten && (props.mokokosTotal - props.pivot.mokokosGotten === 0),
 }))
 
 

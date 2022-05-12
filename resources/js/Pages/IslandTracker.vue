@@ -114,7 +114,7 @@ function toggleFavorite(id){
 
 function updateMokoko(id, value){
     let islandToChange = islandList.value.find(island => island.id === id);
-    islandToChange.pivot.mokokosCollected = value;
+    islandToChange.pivot.mokokosGotten = value;
 }
 
 function toggleSoul(id){

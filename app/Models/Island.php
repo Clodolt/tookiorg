@@ -22,6 +22,9 @@ class Island extends Model
         'islandType',
     ];
 
+    public function users(){
+        return $this->belongsToMany(Island::class)->withPivot('isFavorite', 'mokokosGotten', 'soulGotten');
+    }
 }
 
 

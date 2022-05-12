@@ -81,11 +81,22 @@ class IslandController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user = User::find($id);
+        $island_id =$request->request->get('id');
+        $pivot = $request->request->get('pivot');
+        $user->islands()->sync([$island_id => [
+            'isFavorite' => $pivot['isFavorite'],
+            'mokokosGotten' => $pivot['mokokosGotten'],
+            'soulGotten' => $pivot['soulGotten']
+        ]], false);
+
+        return $user->islands;
         /*
         $island = Island::find($id);
         $island->update($request->all());
         return $island;
         */
+
     }
 
     /**

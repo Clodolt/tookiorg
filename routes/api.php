@@ -32,6 +32,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //Public routes
 Route::get('/islands', [IslandController::class, 'index']);
-Route::get('/islands/{title}', [IslandController::class, 'show']);
+Route::get('/islands/{id}', [IslandController::class, 'show']);
+Route::post('/islands/{id}', [IslandController::class, 'update']);
 
 //Route::resource('island', IslandController::class);
