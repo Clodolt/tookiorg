@@ -44,7 +44,7 @@ const cardClassObject = computed(() => ({
 
                 </v-avatar>
                 <v-card-header-text>
-                    <v-card-title class="text-grey-lighten-5 tw-ml-3">{{props.title}}</v-card-title>
+                    <v-card-title class="text-grey-lighten-5 tw-ml-3" :class="{'tw-text-lg': props.title.length > 10 && props.title.length <= 19, 'tw-text-sm':props.title.length >= 20,}">{{props.title}}</v-card-title>
                     <v-card-subtitle class="text-grey-lighten-5 tw-ml-3">Item-Level: {{props.ilvl}}</v-card-subtitle>
                 </v-card-header-text>
                 <v-icon @click="$emit('updateIsland', props, 'isFavorite', !props.pivot.isFavorite)" class="tw-pt-1 tw-cursor-pointer" size="35" style="color: #f5c542" v-if="props.pivot.isFavorite">
@@ -79,7 +79,9 @@ const cardClassObject = computed(() => ({
                     <!-- TODO: FIX SWITCH -->
                     <v-switch
                         :model-value="props.pivot.soulGotten"
-                        @click="$emit('updateIsland', props, 'soulGotten', !props.pivot.soulGotten)"
+                        :true-value="1"
+                        :false-value="0"
+                        @click="$emit('updateIsland', props, 'soulGotten', props.pivot.soulGotten === 1 ? 0:1)"
                         color="green"
                         hide-details
                     />

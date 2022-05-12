@@ -61,9 +61,10 @@ function updateIsland(island, key, value){
     islandList.value[islandIndex].pivot[key] = value;
 
 
-    axios.post('http://localhost:3000/api/islands/'+id, islandList.value[islandIndex]).then(res => {
+    axios.post('/api/islands/'+id, islandList.value[islandIndex]).then(res => {
+        getIslands('/api/islands/'+id);
         });
-    getIslands(`http://localhost:3000/api/islands/${id}`);
+
 }
 
 
