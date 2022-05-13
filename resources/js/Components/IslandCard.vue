@@ -92,8 +92,12 @@ const cardClassObject = computed(() => ({
 
                 <div class="text-body-1 text-grey-lighten-4 font-weight-medium tw-pl-4">{{props.soulType}}</div>
 
-                <v-icon class="tw-ml-auto tw-mr-2 tw-mb-1" size="30" color="white">
+                <v-icon v-if="props.islandType === 'Compass'" class="tw-ml-auto tw-mr-2 tw-mb-1" size="30" color="white">
                     mdi-compass-outline
+                </v-icon>
+
+                <v-icon v-if="props.islandType === 'Timed'" class="tw-ml-auto tw-mr-2 tw-mb-1" size="30" color="white">
+                    mdi-timer-sand-empty
                 </v-icon>
 
 
