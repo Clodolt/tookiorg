@@ -277,36 +277,42 @@ watch(notifyFilter.value, (newFilter) => {
                                                             multiple
                                                             column>
                                                             <v-chip
+                                                                value="Seria"
                                                                 class="ma-2"
                                                                 color="blue"
                                                             >
                                                                 Seria
                                                             </v-chip>
                                                             <v-chip
+                                                                value="Mokamoka"
                                                                 class="ma-2"
                                                                 color="blue"
                                                             >
                                                                 Mokamoka
                                                             </v-chip>
                                                             <v-chip
+                                                                value="Madnick"
                                                                 class="ma-2"
                                                                 color="blue"
                                                             >
                                                                 Madnick
                                                             </v-chip>
                                                             <v-chip
+                                                                value="Sian"
                                                                 class="ma-2"
                                                                 color="blue"
                                                             >
                                                                 Sian
                                                             </v-chip>
                                                             <v-chip
+                                                                value="Kaysarr"
                                                                 class="ma-2"
                                                                 color="purple"
                                                             >
                                                                 Kaysarr
                                                             </v-chip>
                                                             <v-chip
+                                                                value="Wei"
                                                                 class="ma-2"
                                                                 color="orange"
                                                             >
