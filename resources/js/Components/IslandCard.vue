@@ -96,8 +96,12 @@ const cardClassObject = computed(() => ({
                     mdi-compass-outline
                 </v-icon>
 
-                <v-icon v-if="props.islandType === 'Timed'" class="tw-ml-auto tw-mr-2 tw-mb-1" size="30" color="white">
+                <v-icon v-else-if="props.islandType === 'Timed'" class="tw-ml-auto tw-mr-2 tw-mb-1" size="30" color="white">
                     mdi-timer-sand-empty
+                </v-icon>
+
+                <v-icon v-else class="tw-ml-auto tw-mr-2 tw-mb-1" size="30" color="white">
+                    mdi-island
                 </v-icon>
 
 
