@@ -59,6 +59,9 @@ const filteredList = computed(() => {
 function updateIsland(island, key, value){
     let islandIndex = islandList.value.findIndex((item) => item.id === island.id);
     islandList.value[islandIndex].pivot[key] = value;
+    if(islandList.value[islandIndex].soulType === 'None') {
+        islandList.value[islandIndex].pivot['soulGotten'] = 1;
+    }
 
 
     axios.post('/api/islands/'+id, islandList.value[islandIndex]).then(res => {
@@ -105,20 +108,26 @@ onBeforeMount(()=> {
                 <select v-model="soulTypeFilter" name="soulType" class="tw-w-1/6 tw-h-10 tw-rounded-lg tw-drop-shadow-lg tw-bg-white dark:tw-bg-neutral-800 dark:tw-text-white pl-3 tw-ml-6">
 
                     <option class="text-center" value=""> All </option>
-                    <option class="text-center"> RNG </option>
+                    <option class="text-center"> Quest </option>
                     <option class="text-center"> Una's Task </option>
+                    <option class="text-center"> RNG [Non-Combat] </option>
+                    <option class="text-center"> RNG [Defeat Monsters] </option>
+                    <option class="text-center"> RNG [PvP Rewards] </option>
+                    <option class="text-center"> Rapport </option>
+                    <option class="text-center"> Exchange </option>
+                    <option class="text-center"> Collection </option>
                 </select>
 
             </div>
         </template>
 
         <div class="tw-py-12">
-            <div class="tw-max-w-7xl tw-mx-auto sm:tw-px-6 lg:tw-px-8">
+            <div class="tw-max-w-screen-2xl tw-mx-auto sm:tw-px-6 lg:tw-px-8">
                 <div class="tw-bg-white tw-overflow-hidden tw-shadow-sm sm:tw-rounded-lg">
                     <div class="tw-p-6 tw-bg-white dark:tw-bg-neutral-700">
                     <v-container>
                         <v-row>
-                            <v-col v-for="item in filteredList" :key="item.title" cols="4">
+                            <v-col v-for="item in filteredList" :key="item.title" >
                                 <IslandCard v-bind="item" @update-island="updateIsland"/>
                             </v-col>
 

@@ -63,6 +63,15 @@ class IslandSeeder extends Seeder
 
         DB::table('islands')->insert(
             [
+                'title' => 'Astella',
+                'ilvl' => 250,
+                'mokokosTotal' => 4,
+                'soulType' => 'RNG [Non-Combat]',
+                'islandType' => 'None']
+        );
+
+        DB::table('islands')->insert(
+            [
                 'title' => 'Asura Island',
                 'ilvl' => 250,
                 'mokokosTotal' => 2,
@@ -210,7 +219,7 @@ class IslandSeeder extends Seeder
         );
         DB::table('islands')->insert(
             [
-                'title' => 'Famona Island',
+                'title' => 'Fomona Island',
                 'ilvl' => 250,
                 'mokokosTotal' => 5,
                 'soulType' => 'None',
@@ -265,14 +274,6 @@ class IslandSeeder extends Seeder
                 'islandType' => 'None']
         );
 
-        DB::table('islands')->insert(
-            [
-                'title' => 'Gesbroy',
-                'ilvl' => 600,
-                'mokokosTotal' => 9,
-                'soulType' => 'Una\'s Task',
-                'islandType' => 'None']
-        );
         DB::table('islands')->insert(
             [
                 'title' => 'Giant Mushroom Island',
@@ -331,7 +332,7 @@ class IslandSeeder extends Seeder
         );
         DB::table('islands')->insert(
             [
-                'title' => 'Hypno\'s Eyes',
+                'title' => 'Hypnos\'s Eyes',
                 'ilvl' => 460,
                 'mokokosTotal' => 5,
                 'soulType' => 'Rapport',
@@ -379,7 +380,7 @@ class IslandSeeder extends Seeder
         );
         DB::table('islands')->insert(
             [
-                'title' => 'Island of Yearning',
+                'title' => 'Isle of Yearning',
                 'ilvl' => 460,
                 'mokokosTotal' => 3,
                 'soulType' => 'RNG [Defeat Monsters]',
@@ -491,7 +492,7 @@ class IslandSeeder extends Seeder
         );
         DB::table('islands')->insert(
             [
-                'title' => 'Metus Island',
+                'title' => 'Metus Islands',
                 'ilvl' => 960,
                 'mokokosTotal' => 2,
                 'soulType' => 'Quest',

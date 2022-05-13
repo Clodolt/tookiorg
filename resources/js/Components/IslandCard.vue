@@ -40,11 +40,11 @@ const cardClassObject = computed(() => ({
                     'tw-outline-amber-500': props.pivot.isFavorite && !(props.pivot.soulGotten && props.mokokosTotal - props.pivot.mokokosGotten === 0),
                     }"
                 >
-                    <v-img src="https://d3planner-assets.maxroll.gg/lost-ark/icons/island_icon_12.png"></v-img>
+                    <v-img :src="'/assets/IslandIcons/' + props.title + '.png'"></v-img>
 
                 </v-avatar>
                 <v-card-header-text>
-                    <v-card-title class="text-grey-lighten-5 tw-ml-3" :class="{'tw-text-lg': props.title.length > 10 && props.title.length <= 19, 'tw-text-sm':props.title.length >= 20,}">{{props.title}}</v-card-title>
+                    <v-card-title class="text-grey-lighten-5 tw-ml-3" :class="{'tw-text-lg': props.title.length > 10 && props.title.length <= 15, 'tw-text-sm':props.title.length >= 15,}">{{props.title}}</v-card-title>
                     <v-card-subtitle class="text-grey-lighten-5 tw-ml-3">Item-Level: {{props.ilvl}}</v-card-subtitle>
                 </v-card-header-text>
                 <v-icon @click="$emit('updateIsland', props, 'isFavorite', !props.pivot.isFavorite)" class="tw-pt-1 tw-cursor-pointer" size="35" style="color: #f5c542" v-if="props.pivot.isFavorite">
@@ -78,6 +78,7 @@ const cardClassObject = computed(() => ({
                     <div style="width: 50px"></div>
                     <!-- TODO: FIX SWITCH -->
                     <v-switch
+                        :disabled="props.soulType === 'None'"
                         :model-value="props.pivot.soulGotten"
                         :true-value="1"
                         :false-value="0"
